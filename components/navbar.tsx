@@ -69,7 +69,7 @@ export function Navbar() {
               <span className="text-white font-bold text-lg md:text-xl">I</span>
             </div>
             <span className="text-hero-foreground font-bold text-lg md:text-xl tracking-tight">
-              Invest<span className="text-primary">BD</span>
+              Agro<span className="text-primary">Next</span>
             </span>
           </Link>
 

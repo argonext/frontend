@@ -1,8 +1,10 @@
 "use client"
 
 import { useState, useRef, useEffect, Suspense } from "react"
+import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Loader2, ArrowLeft } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 function VerifyOTPContent() {
     const router = useRouter()
@@ -135,78 +137,100 @@ function VerifyOTPContent() {
     }
 
     return (
-        <div className="min-h-screen bg-linear-to-b from-green-600 via-green-700 to-green-800 flex flex-col items-center justify-center p-4">
-            {/* Title */}
-            <h1 className="text-white text-3xl font-semibold mb-4">Verify OTP</h1>
-
-            <p className="text-white/80 text-sm mb-8 text-center">
-                We&apos;ve sent a verification code to<br />
-                <span className="font-semibold">{identifier}</span>
-            </p>
-
-            {/* OTP Inputs */}
-            <div className="flex gap-3 mb-6">
-                {otp.map((digit, index) => (
-                    <input
-                        key={index}
-                        ref={(el) => { inputRefs.current[index] = el }}
-                        type="text"
-                        inputMode="numeric"
-                        value={digit}
-                        onChange={(e) => handleOtpChange(index, e.target.value)}
-                        onKeyDown={(e) => handleKeyDown(index, e)}
-                        onPaste={handlePaste}
-                        className="w-12 h-14 bg-white rounded-xl text-center text-2xl font-bold text-green-700 focus:outline-none focus:ring-2 focus:ring-green-400"
-                        maxLength={1}
-                        aria-label={`OTP digit ${index + 1}`}
-                        placeholder="0"
-                    />
-                ))}
+        <div className="min-h-screen bg-hero-bg relative overflow-hidden flex flex-col items-center justify-center p-4">
+            {/* Animated background elements */}
+            <div className="absolute inset-0">
+                <div className="absolute top-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/30 rounded-full blur-3xl animate-pulse-slow" />
+                <div
+                    className="absolute bottom-20 right-5 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"
+                    style={{ animationDelay: "1s" }}
+                />
             </div>
 
-            {/* Error Message */}
-            {error && (
-                <div className="bg-red-500/90 text-white text-sm py-2 px-4 rounded-lg text-center mb-4 w-full max-w-md">
-                    {error}
+            <div className="relative z-10 w-full max-w-md">
+                {/* Logo */}
+                <div className="flex justify-center mb-4">
+                    <Link href="/" className="flex items-center gap-2 group">
+                        <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 group-hover:shadow-primary/40 group-hover:scale-110 transition-all duration-300">
+                            <span className="text-white font-bold text-2xl">I</span>
+                        </div>
+                    </Link>
                 </div>
-            )}
 
-            {/* Verify Button */}
-            <button
-                onClick={handleVerify}
-                disabled={isLoading || otp.some(d => !d)}
-                className="w-full max-w-md bg-white text-green-700 font-semibold py-4 rounded-full hover:bg-white/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mb-4"
-            >
-                {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
-                Verify OTP
-            </button>
+                {/* Title */}
+                <h1 className="text-hero-foreground text-2xl font-bold text-center mb-2">Verify OTP</h1>
+                <p className="text-hero-foreground/60 text-center mb-6">
+                    We&apos;ve sent a verification code to<br />
+                    <span className="font-semibold text-hero-foreground/80">{identifier}</span>
+                </p>
 
-            {/* Resend OTP */}
-            <div className="text-center">
-                {resendTimer > 0 ? (
-                    <p className="text-white/70 text-sm">
-                        Resend OTP in <span className="font-semibold">{resendTimer}s</span>
-                    </p>
-                ) : (
-                    <button
-                        onClick={handleResendOTP}
-                        disabled={isLoading}
-                        className="text-white hover:text-white/80 transition-colors text-sm font-semibold"
+                {/* Form Card */}
+                <div className="w-full bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 shadow-xl">
+                    {/* OTP Inputs */}
+                    <div className="flex gap-3 justify-center mb-6">
+                        {otp.map((digit, index) => (
+                            <input
+                                key={index}
+                                ref={(el) => { inputRefs.current[index] = el }}
+                                type="text"
+                                inputMode="numeric"
+                                value={digit}
+                                onChange={(e) => handleOtpChange(index, e.target.value)}
+                                onKeyDown={(e) => handleKeyDown(index, e)}
+                                onPaste={handlePaste}
+                                className="w-12 h-14 bg-white/10 border border-white/10 rounded-xl text-center text-2xl font-bold text-hero-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
+                                maxLength={1}
+                                aria-label={`OTP digit ${index + 1}`}
+                                placeholder="0"
+                            />
+                        ))}
+                    </div>
+
+                    {/* Error Message */}
+                    {error && (
+                        <div className="bg-destructive/20 border border-destructive/30 text-destructive text-sm py-3 px-4 rounded-xl text-center mb-4">
+                            {error}
+                        </div>
+                    )}
+
+                    {/* Verify Button */}
+                    <Button
+                        onClick={handleVerify}
+                        disabled={isLoading || otp.some(d => !d)}
+                        className="w-full gradient-bg hover:opacity-90 text-white font-semibold py-4 h-auto rounded-xl shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        Resend OTP
-                    </button>
-                )}
-            </div>
+                        {isLoading ? <Loader2 className="w-5 h-5 animate-spin mr-2" /> : null}
+                        Verify OTP
+                    </Button>
 
-            {/* Back Button */}
-            <button
-                onClick={() => router.back()}
-                title="Go back"
-                aria-label="Go back"
-                className="fixed bottom-6 right-6 w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all"
-            >
-                <ArrowLeft className="w-6 h-6" />
-            </button>
+                    {/* Resend OTP */}
+                    <div className="text-center mt-6">
+                        {resendTimer > 0 ? (
+                            <p className="text-hero-foreground/60 text-sm">
+                                Resend OTP in <span className="font-semibold text-primary">{resendTimer}s</span>
+                            </p>
+                        ) : (
+                            <button
+                                onClick={handleResendOTP}
+                                disabled={isLoading}
+                                className="text-primary hover:text-primary/80 transition-colors text-sm font-semibold"
+                            >
+                                Resend OTP
+                            </button>
+                        )}
+                    </div>
+                </div>
+
+                {/* Back Button */}
+                <button
+                    onClick={() => router.back()}
+                    title="Go back"
+                    aria-label="Go back"
+                    className="fixed bottom-6 right-6 w-14 h-14 bg-white/10 backdrop-blur-sm border border-white/10 rounded-full flex items-center justify-center text-hero-foreground hover:bg-white/20 transition-all"
+                >
+                    <ArrowLeft className="w-6 h-6" />
+                </button>
+            </div>
         </div>
     )
 }
@@ -214,8 +238,8 @@ function VerifyOTPContent() {
 export default function VerifyOTPPage() {
     return (
         <Suspense fallback={
-            <div className="min-h-screen bg-linear-to-b from-green-600 via-green-700 to-green-800 flex items-center justify-center">
-                <Loader2 className="w-8 h-8 animate-spin text-white" />
+            <div className="min-h-screen bg-hero-bg flex items-center justify-center">
+                <Loader2 className="w-8 h-8 animate-spin text-primary" />
             </div>
         }>
             <VerifyOTPContent />

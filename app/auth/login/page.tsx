@@ -3,7 +3,8 @@
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { Mail, Phone, Lock, Eye, EyeOff, Loader2 } from "lucide-react"
+import { Mail, Phone, Lock, Eye, EyeOff, Loader2, Sparkles } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export default function LoginPage() {
     const router = useRouter()
@@ -109,139 +110,137 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="min-h-screen bg-linear-to-b from-green-600 via-green-700 to-green-800 flex flex-col items-center justify-center p-4">
-            {/* Logo */}
-            <div className="mb-4">
-                <div className="w-20 h-20 relative">
-                    <svg viewBox="0 0 100 100" className="w-full h-full">
-                        <path
-                            d="M50 10 L70 50 L50 90 L30 50 Z"
-                            fill="none"
-                            stroke="white"
-                            strokeWidth="3"
-                        />
-                        <path
-                            d="M35 35 L65 65"
-                            fill="none"
-                            stroke="white"
-                            strokeWidth="3"
-                        />
-                        <path
-                            d="M50 30 L70 50 L50 70"
-                            fill="none"
-                            stroke="white"
-                            strokeWidth="2"
-                        />
-                    </svg>
-                </div>
+        <div className="min-h-screen bg-hero-bg relative overflow-hidden flex flex-col items-center justify-center p-4">
+            {/* Animated background elements */}
+            <div className="absolute inset-0">
+                <div className="absolute top-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/30 rounded-full blur-3xl animate-pulse-slow" />
+                <div
+                    className="absolute bottom-20 right-5 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"
+                    style={{ animationDelay: "1s" }}
+                />
             </div>
 
-            {/* Welcome Text */}
-            <h1 className="text-white text-2xl font-semibold mb-6">Welcome to AgroNext!</h1>
-
-            {/* Login Card */}
-            <div className="w-full max-w-md bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20">
-                <h2 className="text-white text-2xl font-semibold text-center mb-6">Login</h2>
-
-                {/* Toggle Buttons */}
-                <div className="flex bg-white/10 rounded-full p-1 mb-6">
-                    <button
-                        type="button"
-                        onClick={() => setLoginMethod("email")}
-                        className={`flex-1 py-3 rounded-full text-sm font-medium transition-all ${loginMethod === "email"
-                                ? "bg-green-600 text-white shadow-lg"
-                                : "text-white/70 hover:text-white"
-                            }`}
-                    >
-                        Email
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => setLoginMethod("phone")}
-                        className={`flex-1 py-3 rounded-full text-sm font-medium transition-all ${loginMethod === "phone"
-                                ? "bg-green-600 text-white shadow-lg"
-                                : "text-white/70 hover:text-white"
-                            }`}
-                    >
-                        Phone
-                    </button>
+            <div className="relative z-10 w-full max-w-md">
+                {/* Logo */}
+                <div className="flex justify-center mb-4">
+                    <Link href="/" className="flex items-center gap-2 group">
+                        <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 group-hover:shadow-primary/40 group-hover:scale-110 transition-all duration-300">
+                            <span className="text-white font-bold text-2xl">I</span>
+                        </div>
+                    </Link>
                 </div>
 
-                <form onSubmit={handleLoginWithPassword} className="space-y-4">
-                    {/* Email/Phone Input */}
-                    <div className="relative">
-                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-green-600">
-                            {loginMethod === "email" ? <Mail className="w-5 h-5" /> : <Phone className="w-5 h-5" />}
-                        </div>
-                        <input
-                            type={loginMethod === "email" ? "email" : "tel"}
-                            name={loginMethod}
-                            value={loginMethod === "email" ? formData.email : formData.phone}
-                            onChange={handleInputChange}
-                            placeholder={loginMethod === "email" ? "Email Address" : "Phone Number"}
-                            className="w-full bg-white rounded-full py-4 pl-12 pr-4 text-green-700 placeholder:text-green-600/60 focus:outline-none focus:ring-2 focus:ring-green-400"
-                        />
-                    </div>
+                {/* Welcome Text */}
+                <h1 className="text-hero-foreground text-2xl font-bold text-center mb-2">
+                    Welcome to <span className="text-primary">InvestBD</span>
+                </h1>
+                <p className="text-hero-foreground/60 text-center mb-6">Sign in to continue</p>
 
-                    {/* Password Login Button */}
-                    <div className="relative">
-                        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-green-600">
-                            <Lock className="w-5 h-5" />
-                        </div>
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            name="password"
-                            value={formData.password}
-                            onChange={handleInputChange}
-                            placeholder="Password"
-                            className="w-full bg-white rounded-full py-4 pl-12 pr-12 text-green-700 placeholder:text-green-600/60 focus:outline-none focus:ring-2 focus:ring-green-400"
-                        />
+                {/* Login Card */}
+                <div className="w-full bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 shadow-xl">
+                    <h2 className="text-hero-foreground text-xl font-semibold text-center mb-6">Login</h2>
+
+                    {/* Toggle Buttons */}
+                    <div className="flex bg-white/5 rounded-xl p-1 mb-6">
                         <button
                             type="button"
-                            onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-4 top-1/2 -translate-y-1/2 text-green-600"
+                            onClick={() => setLoginMethod("email")}
+                            className={`flex-1 py-3 rounded-lg text-sm font-medium transition-all ${loginMethod === "email"
+                                ? "gradient-bg text-white shadow-lg"
+                                : "text-hero-foreground/70 hover:text-hero-foreground"
+                                }`}
                         >
-                            {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                            Email
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => setLoginMethod("phone")}
+                            className={`flex-1 py-3 rounded-lg text-sm font-medium transition-all ${loginMethod === "phone"
+                                ? "gradient-bg text-white shadow-lg"
+                                : "text-hero-foreground/70 hover:text-hero-foreground"
+                                }`}
+                        >
+                            Phone
                         </button>
                     </div>
 
-                    {/* Error Message */}
-                    {error && (
-                        <div className="bg-red-500/90 text-white text-sm py-2 px-4 rounded-lg text-center">
-                            {error}
+                    <form onSubmit={handleLoginWithPassword} className="space-y-4">
+                        {/* Email/Phone Input */}
+                        <div className="relative">
+                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-primary">
+                                {loginMethod === "email" ? <Mail className="w-5 h-5" /> : <Phone className="w-5 h-5" />}
+                            </div>
+                            <input
+                                type={loginMethod === "email" ? "email" : "tel"}
+                                name={loginMethod}
+                                value={loginMethod === "email" ? formData.email : formData.phone}
+                                onChange={handleInputChange}
+                                placeholder={loginMethod === "email" ? "Email Address" : "Phone Number"}
+                                className="w-full bg-white/10 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-hero-foreground placeholder:text-hero-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
+                            />
                         </div>
-                    )}
 
-                    {/* Login with Password Button */}
-                    <button
-                        type="submit"
-                        disabled={isLoading}
-                        className="w-full bg-white text-green-700 font-semibold py-4 rounded-full hover:bg-white/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                    >
-                        {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
-                        Login with Password
-                    </button>
+                        {/* Password Input */}
+                        <div className="relative">
+                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-primary">
+                                <Lock className="w-5 h-5" />
+                            </div>
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                value={formData.password}
+                                onChange={handleInputChange}
+                                placeholder="Password"
+                                className="w-full bg-white/10 border border-white/10 rounded-xl py-4 pl-12 pr-12 text-hero-foreground placeholder:text-hero-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all"
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 text-hero-foreground/60 hover:text-primary transition-colors"
+                            >
+                                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                            </button>
+                        </div>
 
-                    {/* Login with OTP Button */}
-                    <button
-                        type="button"
-                        onClick={handleLoginWithOTP}
-                        disabled={isLoading}
-                        className="w-full bg-transparent border-2 border-white text-white font-semibold py-4 rounded-full hover:bg-white/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                    >
-                        {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
-                        Login with OTP
-                    </button>
-                </form>
+                        {/* Error Message */}
+                        {error && (
+                            <div className="bg-destructive/20 border border-destructive/30 text-destructive text-sm py-3 px-4 rounded-xl text-center">
+                                {error}
+                            </div>
+                        )}
 
-                {/* Footer Links */}
-                <div className="flex justify-between mt-6 text-sm">
-                    <Link href="/auth/register" className="text-white/80 hover:text-white transition-colors">
-                        Don&apos;t have an account?
-                    </Link>
-                    <Link href="/auth/forgot-password" className="text-white/80 hover:text-white transition-colors">
-                        Forgot Password
-                    </Link>
+                        {/* Login with Password Button */}
+                        <Button
+                            type="submit"
+                            disabled={isLoading}
+                            className="w-full gradient-bg hover:opacity-90 text-white font-semibold py-4 h-auto rounded-xl shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            {isLoading ? <Loader2 className="w-5 h-5 animate-spin mr-2" /> : null}
+                            Login with Password
+                        </Button>
+
+                        {/* Login with OTP Button */}
+                        <Button
+                            type="button"
+                            variant="outline"
+                            onClick={handleLoginWithOTP}
+                            disabled={isLoading}
+                            className="w-full border-white/20 text-hero-foreground bg-white/10 hover:bg-white/20 font-semibold py-4 h-auto rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            {isLoading ? <Loader2 className="w-5 h-5 animate-spin mr-2" /> : <Sparkles className="w-5 h-5 mr-2" />}
+                            Login with OTP
+                        </Button>
+                    </form>
+
+                    {/* Footer Links */}
+                    <div className="flex justify-between mt-6 text-sm">
+                        <Link href="/auth/register" className="text-hero-foreground/60 hover:text-primary transition-colors">
+                            Don&apos;t have an account?
+                        </Link>
+                        <Link href="/auth/forgot-password" className="text-hero-foreground/60 hover:text-primary transition-colors">
+                            Forgot Password
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
