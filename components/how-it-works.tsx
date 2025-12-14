@@ -16,8 +16,8 @@ const steps = [
   {
     icon: Search,
     step: "02",
-    title: "Browse Investments",
-    description: "Explore verified businesses across multiple sectors.",
+    title: "Browse Agro Projects",
+    description: "Explore verified agricultural campaigns across Bangladesh.",
     color: "from-accent to-orange",
     bgColor: "bg-accent/10",
     borderColor: "border-accent/30",
@@ -34,8 +34,8 @@ const steps = [
   {
     icon: TrendingUp,
     step: "04",
-    title: "Earn Returns",
-    description: "Receive principal plus profits on maturity.",
+    title: "Harvest Returns",
+    description: "Receive principal plus profits after harvest season.",
     color: "from-chart-4 to-primary",
     bgColor: "bg-chart-4/10",
     borderColor: "border-chart-4/30",

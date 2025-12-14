@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Clock, Users, TrendingUp, Sparkles } from "lucide-react"
@@ -7,55 +8,59 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 const investments = [
   {
-    title: "GreenHarvest Farms",
+    id: 1,
+    title: "Organic Rice Farming - Sylhet",
     category: "Agriculture",
-    image: "/green-farm-agricultural-land-with-crops.jpg",
+    image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&q=80",
     raised: 850000,
     target: 1000000,
-    returns: "18%",
-    duration: "12 months",
-    investors: 124,
+    returns: "12-15%",
+    duration: "12 days left",
+    investors: 156,
     status: "Active",
     gradient: "from-primary/20 to-chart-4/20",
     accentColor: "text-primary",
     borderColor: "hover:border-primary/50",
   },
   {
-    title: "TechMart Electronics",
-    category: "E-commerce",
-    image: "/modern-electronics-retail-store-interior.jpg",
+    id: 3,
+    title: "Fishery Project - Cox's Bazar",
+    category: "Fishery",
+    image: "https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=800&q=80",
     raised: 620000,
     target: 800000,
-    returns: "16%",
-    duration: "9 months",
-    investors: 89,
+    returns: "10-14%",
+    duration: "21 days left",
+    investors: 98,
     status: "Active",
     gradient: "from-accent/20 to-orange/20",
     accentColor: "text-accent",
     borderColor: "hover:border-accent/50",
   },
   {
-    title: "FreshFood Processing",
-    category: "Food & Beverage",
-    image: "/food-processing-factory-modern.jpg",
-    raised: 1200000,
-    target: 1500000,
-    returns: "20%",
-    duration: "18 months",
-    investors: 156,
+    id: 5,
+    title: "Vegetable Export - Jessore",
+    category: "Agriculture",
+    image: "https://images.unsplash.com/photo-1597362925123-77861d3fbac7?w=800&q=80",
+    raised: 450000,
+    target: 700000,
+    returns: "11-13%",
+    duration: "30 days left",
+    investors: 67,
     status: "Active",
     gradient: "from-purple/20 to-pink/20",
     accentColor: "text-purple",
     borderColor: "hover:border-purple/50",
   },
   {
-    title: "CleanEnergy Solar",
-    category: "Renewable Energy",
-    image: "/solar-panel-installation-field.jpg",
-    raised: 2000000,
-    target: 2000000,
-    returns: "22%",
-    duration: "24 months",
+    id: 2,
+    title: "Poultry Farm Expansion - Chittagong",
+    category: "Poultry",
+    image: "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&q=80",
+    raised: 1500000,
+    target: 1500000,
+    returns: "14-18%",
+    duration: "Completed",
     investors: 234,
     status: "Funded",
     gradient: "from-chart-4/20 to-primary/20",
@@ -88,17 +93,20 @@ export function FeaturedInvestments() {
               Explore verified businesses ready for investment
             </p>
           </div>
-          <Button
-            variant="outline"
-            className="gap-2 self-start bg-transparent border-primary/30 hover:bg-primary/10 hover:border-primary text-foreground text-sm sm:text-base"
-          >
-            View All <ArrowRight className="w-4 h-4" />
-          </Button>
+          <Link href="/campaigns">
+            <Button
+              variant="outline"
+              className="gap-2 self-start bg-transparent border-primary/30 hover:bg-primary/10 hover:border-primary text-foreground text-sm sm:text-base"
+            >
+              View All <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
         </div>
 
         <div className="flex overflow-x-auto sm:overflow-visible snap-x snap-mandatory sm:snap-none scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {investments.map((investment, index) => (
-            <div
+            <Link
+              href={`/campaigns/${investment.id}`}
               key={index}
               className={`flex-shrink-0 w-[280px] sm:w-auto snap-center group bg-card border border-border rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-2xl ${investment.borderColor} transition-all duration-300 hover:-translate-y-1 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
               style={{ animationDelay: `${index * 100}ms` }}
@@ -159,7 +167,7 @@ export function FeaturedInvestments() {
                         <Clock className="w-3 h-3" />
                         <span className="font-semibold text-xs sm:text-sm">{investment.duration.split(" ")[0]}</span>
                       </div>
-                      <p className="text-[10px] sm:text-xs text-muted-foreground">Months</p>
+                      <p className="text-[10px] sm:text-xs text-muted-foreground">{investment.status === "Funded" ? "Status" : "Days"}</p>
                     </div>
                     <div>
                       <div className="flex items-center justify-center gap-0.5 sm:gap-1 text-card-foreground">
@@ -178,7 +186,7 @@ export function FeaturedInvestments() {
                   {investment.status === "Funded" ? "Fully Funded" : "Invest Now"}
                 </Button>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

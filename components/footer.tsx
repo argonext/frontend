@@ -7,18 +7,18 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 const footerLinks = {
   company: [
-    { label: "About Us", href: "#" },
-    { label: "Team", href: "#" },
-    { label: "Careers", href: "#" },
+    { label: "About Us", href: "/about" },
+    { label: "Shariah", href: "/shariah" },
+    { label: "Contact", href: "/contact" },
   ],
   invest: [
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "Investments", href: "#investments" },
-    { label: "FAQs", href: "#" },
+    { label: "Campaigns", href: "/campaigns" },
+    { label: "Reports", href: "/reports" },
+    { label: "Apply for Financing", href: "/apply" },
   ],
-  legal: [
-    { label: "Terms", href: "#" },
-    { label: "Privacy", href: "#" },
+  support: [
+    { label: "FAQ", href: "/faq" },
+    { label: "Get the App", href: "/app" },
     { label: "Risk Disclosure", href: "#" },
   ],
 }
@@ -76,19 +76,19 @@ export function Footer() {
           <div className="col-span-2 sm:col-span-4 lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-3 sm:mb-4 group">
               <div className="w-8 h-8 sm:w-10 sm:h-10 gradient-bg rounded-lg flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
-                <span className="text-white font-bold text-base sm:text-xl">I</span>
+                <span className="text-white font-bold text-base sm:text-xl">A</span>
               </div>
               <span className="font-bold text-lg sm:text-xl">
-                Invest<span className="text-primary">BD</span>
+                Agro<span className="text-primary">Next</span>
               </span>
             </Link>
             <p className="text-hero-foreground/60 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 max-w-xs">
-              Making smart investments accessible to everyone. Start building your wealth today.
+              Shariah-compliant agricultural investments. Grow your wealth while making a positive impact.
             </p>
             <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-hero-foreground/60">
               <div className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer">
                 <Mail className="w-4 h-4 text-primary" />
-                <span>support@investbd.com</span>
+                <span>support@agronext.com</span>
               </div>
               <div className="flex items-center gap-2 hover:text-accent transition-colors cursor-pointer">
                 <Phone className="w-4 h-4 text-accent" />
@@ -135,9 +135,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 sm:mb-4 text-purple text-sm sm:text-base">Legal</h4>
+            <h4 className="font-semibold mb-3 sm:mb-4 text-purple text-sm sm:text-base">Support</h4>
             <ul className="space-y-2 sm:space-y-3">
-              {footerLinks.legal.map((link) => (
+              {footerLinks.support.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
@@ -156,7 +156,7 @@ export function Footer() {
           className={`mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-hero-foreground/10 flex flex-col sm:flex-row items-center justify-between gap-4 ${isVisible ? "animate-fade-in-up delay-400" : "opacity-0"}`}
         >
           <p className="text-hero-foreground/60 text-xs sm:text-sm order-2 sm:order-1">
-            © {new Date().getFullYear()} InvestBD. All rights reserved.
+            © {new Date().getFullYear()} AgroNext. All rights reserved.
           </p>
           <div className="flex items-center gap-2 sm:gap-3 order-1 sm:order-2">
             {socialLinks.map((social) => (

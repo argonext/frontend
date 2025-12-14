@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Star, Shield, Zap, Users, TrendingUp } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
@@ -25,11 +26,11 @@ export function CTASection() {
           </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-hero-foreground mb-4 sm:mb-6 text-balance">
-            Ready to Start Your <span className="gradient-text">Investment Journey?</span>
+            Ready to Start Your <span className="gradient-text">Agricultural Investment?</span>
           </h2>
           <p className="text-hero-foreground/70 text-sm sm:text-base lg:text-xl mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto">
             Join <span className="text-accent font-semibold">11,000+</span> investors building wealth through smart,
-            ethical investments.
+            Shariah-compliant agricultural investments.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-10">
@@ -48,22 +49,26 @@ export function CTASection() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12">
-            <Button
-              size="lg"
-              className="gradient-bg hover:opacity-90 text-white gap-2 h-12 sm:h-14 px-6 sm:px-10 w-full sm:w-auto text-sm sm:text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-1 hover:scale-105 group active:scale-95"
-            >
-              <Users className="w-4 h-4 sm:w-5 sm:h-5" />
-              Create Free Account
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white/30 text-hero-foreground hover:bg-white/10 hover:border-accent/50 gap-2 h-12 sm:h-14 px-6 sm:px-10 w-full sm:w-auto text-sm sm:text-base bg-transparent transition-all duration-300 hover:scale-105 group active:scale-95"
-            >
-              <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
-              Browse Investments
-            </Button>
+            <Link href="/campaigns">
+              <Button
+                size="lg"
+                className="gradient-bg hover:opacity-90 text-white gap-2 h-12 sm:h-14 px-6 sm:px-10 w-full sm:w-auto text-sm sm:text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-1 hover:scale-105 group active:scale-95"
+              >
+                <Users className="w-4 h-4 sm:w-5 sm:h-5" />
+                View Campaigns
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Link href="/apply">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white/30 text-hero-foreground hover:bg-white/10 hover:border-accent/50 gap-2 h-12 sm:h-14 px-6 sm:px-10 w-full sm:w-auto text-sm sm:text-base bg-transparent transition-all duration-300 hover:scale-105 group active:scale-95"
+              >
+                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+                Get Financing
+              </Button>
+            </Link>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-hero-foreground/60 text-xs sm:text-sm">

@@ -7,6 +7,7 @@ import { HowItWorks } from "@/components/how-it-works"
 import { FeaturedInvestments } from "@/components/featured-investments"
 import { PlatformFeatures } from "@/components/platform-features"
 import { TestimonialsSection } from "@/components/testimonials-section"
+import { ExploreSection } from "@/components/explore-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 
@@ -33,6 +34,7 @@ export default function Home() {
       <section id="testimonials">
         <TestimonialsSection />
       </section>
+      <ExploreSection />
       <section id="contact">
         <CTASection />
       </section>

@@ -6,38 +6,38 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 const features = [
   {
     icon: Shield,
-    title: "Verified & Secure",
-    description: "All businesses go through rigorous verification with proper legal documentation.",
+    title: "Shariah Compliant",
+    description: "All agricultural projects are verified by our Shariah board for halal compliance.",
     iconBg: "gradient-bg",
   },
   {
     icon: TrendingUp,
     title: "High Returns",
-    description: "Earn 14-22% annual returns. Beat inflation and grow your wealth faster.",
+    description: "Earn 14-22% annual returns from verified agricultural projects.",
     iconBg: "gradient-bg-warm",
   },
   {
     icon: Clock,
     title: "Hassle-Free",
-    description: "We handle assessment, legal contracts, and repayments. You just invest.",
+    description: "We handle farm assessment, contracts, and harvest distribution. You just invest.",
     iconBg: "gradient-bg-purple",
   },
   {
     icon: Wallet,
     title: "Start Small",
-    description: "Begin investing with as low as ৳5,000. Build your portfolio gradually.",
+    description: "Begin investing with as low as ৳5,000. Build your agro portfolio gradually.",
     iconBg: "gradient-bg",
   },
   {
     icon: Users,
     title: "Community Driven",
-    description: "Join 11,000+ investors building wealth through ethical investments.",
+    description: "Join 11,000+ investors building wealth through Shariah-compliant agro investments.",
     iconBg: "gradient-bg-warm",
   },
   {
     icon: FileCheck,
     title: "Full Transparency",
-    description: "Track investments in real-time with detailed performance reports.",
+    description: "Track your investments with real-time farm updates and harvest reports.",
     iconBg: "gradient-bg-purple",
   },
 ]
@@ -57,7 +57,7 @@ export function WhyUsSection() {
             <span className="text-xs sm:text-sm font-medium text-foreground">Why Choose Us</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-3 sm:mb-4">
-            Why Choose <span className="gradient-text">InvestBD</span>
+            Why Choose <span className="gradient-text">AgroNext</span>
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-2xl mx-auto">
             We make investing accessible, transparent, and profitable

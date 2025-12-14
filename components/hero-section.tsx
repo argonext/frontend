@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play, Shield, TrendingUp, Users, Sparkles, CheckCircle2 } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
@@ -32,32 +33,35 @@ export function HeroSection() {
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-hero-foreground leading-tight mb-4 sm:mb-6">
-              Start Investing
-              <span className="block gradient-text">The Smart Way</span>
+              Invest in Agriculture
+              <span className="block gradient-text">Grow Your Wealth</span>
             </h1>
 
             <p className="text-hero-foreground/70 text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Unlock access to verified businesses and startups. Start with as low as{" "}
+              Unlock access to verified agricultural projects and farms. Start with as low as{" "}
               <span className="text-accent font-semibold">৳5,000</span> and build your wealth through transparent,
-              ethical investments.
+              Shariah-compliant investments.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8 sm:mb-12">
-              <Button
-                size="lg"
-                className="gradient-bg hover:opacity-90 text-white gap-2 h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-1 hover:scale-105 group w-full sm:w-auto active:scale-95"
-              >
-                Start Investing Now
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/30 text-hero-foreground hover:bg-white/10 hover:border-accent/50 gap-2 h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base bg-transparent transition-all duration-300 hover:scale-105 group w-full sm:w-auto active:scale-95"
-              >
-                <Play className="w-4 h-4 sm:w-5 sm:h-5 text-accent group-hover:scale-110 transition-transform" /> Watch
-                Demo
-              </Button>
+              <Link href="/campaigns">
+                <Button
+                  size="lg"
+                  className="gradient-bg hover:opacity-90 text-white gap-2 h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-1 hover:scale-105 group w-full sm:w-auto active:scale-95"
+                >
+                  Start Investing Now
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link href="/shariah">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white/30 text-hero-foreground hover:bg-white/10 hover:border-accent/50 gap-2 h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base bg-transparent transition-all duration-300 hover:scale-105 group w-full sm:w-auto active:scale-95"
+                >
+                  <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-accent group-hover:scale-110 transition-transform" /> Shariah Compliant
+                </Button>
+              </Link>
             </div>
 
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-4 text-hero-foreground/80 text-xs sm:text-sm">

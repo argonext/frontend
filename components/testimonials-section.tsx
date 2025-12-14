@@ -9,7 +9,7 @@ const testimonials = [
     role: "Software Engineer",
     avatar: "/professional-bangladeshi-man-portrait.jpg",
     content:
-      "I've been investing with InvestBD for 2 years now. The returns are consistent and the platform is very transparent.",
+      "I've been investing with AgroNext for 2 years now. The returns from agricultural projects are consistent and the platform is very transparent.",
     rating: 5,
     invested: "৳250,000",
     gradient: "from-primary/20 to-chart-4/20",
@@ -21,7 +21,7 @@ const testimonials = [
     role: "Business Owner",
     avatar: "/professional-bangladeshi-woman-portrait.jpg",
     content:
-      "As someone new to investing, I found InvestBD incredibly easy to use. My portfolio has grown 18% this year!",
+      "As someone new to agricultural investing, I found AgroNext incredibly easy to use. My portfolio has grown 18% this year!",
     rating: 5,
     invested: "৳150,000",
     gradient: "from-accent/20 to-orange/20",
@@ -33,7 +33,7 @@ const testimonials = [
     role: "Doctor",
     avatar: "/professional-south-asian-man-doctor-portrait.jpg",
     content:
-      "What I love most is the ethical aspect. Knowing my money supports local businesses while earning returns feels great.",
+      "What I love most is the Shariah compliance. Investing in halal agricultural projects while earning returns feels great.",
     rating: 5,
     invested: "৳500,000",
     gradient: "from-purple/20 to-pink/20",
@@ -60,7 +60,7 @@ export function TestimonialsSection() {
             Trusted by <span className="gradient-text">Investors</span>
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-2xl mx-auto">
-            Join thousands of happy investors building wealth with InvestBD
+            Join thousands of happy investors building wealth with AgroNext
           </p>
         </div>
 
