@@ -80,108 +80,53 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Content - Investment Dashboard Preview */}
+          {/* Right Content - Video Placeholder */}
           <div
             className={`relative flex justify-center lg:justify-end ${isVisible ? "animate-fade-in-right delay-300" : "opacity-0"}`}
           >
-            <div className="relative w-full max-w-sm sm:max-w-md">
+            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg">
               <div className="absolute inset-0 gradient-bg rounded-2xl sm:rounded-3xl blur-2xl opacity-30 scale-105" />
 
-              <div className="relative w-full bg-card/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl border border-white/10 animate-float">
-                <div className="flex items-center justify-between mb-4 sm:mb-6">
-                  <div>
-                    <p className="text-xs sm:text-sm text-muted-foreground">Total Portfolio Value</p>
-                    <p className="text-2xl sm:text-3xl font-bold text-card-foreground">৳1,25,750</p>
-                  </div>
-                  <div className="text-right">
-                    <span className="inline-flex items-center gap-1 text-primary font-semibold bg-primary/10 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
-                      <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4" /> +12.5%
-                    </span>
+              {/* Video Frame */}
+              <div className="relative w-full aspect-video bg-gradient-to-br from-primary/20 via-chart-4/20 to-accent/20 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl border border-white/10 overflow-hidden group cursor-pointer">
+                {/* Placeholder Image/Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0a4d4d] via-[#0d5858] to-[#0a4d4d]">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="mb-4 text-primary/20">
+                        <svg className="w-32 h-32 sm:w-40 sm:h-40 mx-auto" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-3.5l6-4.5-6-4.5v9z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">
+                        Agro<span className="text-primary">Next</span>
+                      </h3>
+                      <p className="text-white/60 text-sm sm:text-base uppercase tracking-wider">AT A GLANCE</p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="space-y-3 sm:space-y-4">
-                  {/* Investment items - More compact on mobile */}
-                  <div className="bg-gradient-to-r from-primary/10 to-chart-4/10 rounded-lg sm:rounded-xl p-3 sm:p-4 border border-primary/20 hover:border-primary/40 transition-colors cursor-pointer group">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <p className="font-semibold text-card-foreground text-sm sm:text-base group-hover:text-primary transition-colors">
-                          AgriTech Farms
-                        </p>
-                        <p className="text-[10px] sm:text-xs text-muted-foreground">Agricultural</p>
-                      </div>
-                      <span className="text-primary font-bold text-xs sm:text-sm bg-primary/10 px-2 sm:px-3 py-1 rounded-full">
-                        +18%
-                      </span>
-                    </div>
-                    <div className="mt-2 sm:mt-3 h-1.5 sm:h-2 bg-muted rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-primary to-chart-4 rounded-full w-[75%]" />
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-r from-accent/10 to-orange/10 rounded-lg sm:rounded-xl p-3 sm:p-4 border border-accent/20 hover:border-accent/40 transition-colors cursor-pointer group">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <p className="font-semibold text-card-foreground text-sm sm:text-base group-hover:text-accent transition-colors">
-                          EcoMart
-                        </p>
-                        <p className="text-[10px] sm:text-xs text-muted-foreground">E-commerce</p>
-                      </div>
-                      <span className="text-accent font-bold text-xs sm:text-sm bg-accent/10 px-2 sm:px-3 py-1 rounded-full">
-                        +14%
-                      </span>
-                    </div>
-                    <div className="mt-2 sm:mt-3 h-1.5 sm:h-2 bg-muted rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-accent to-orange rounded-full w-[60%]" />
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-r from-purple/10 to-pink/10 rounded-lg sm:rounded-xl p-3 sm:p-4 border border-purple/20 hover:border-purple/40 transition-colors cursor-pointer group">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <p className="font-semibold text-card-foreground text-sm sm:text-base group-hover:text-purple transition-colors">
-                          HealthPlus
-                        </p>
-                        <p className="text-[10px] sm:text-xs text-muted-foreground">Healthcare</p>
-                      </div>
-                      <span className="text-purple font-bold text-xs sm:text-sm bg-purple/10 px-2 sm:px-3 py-1 rounded-full">
-                        +22%
-                      </span>
-                    </div>
-                    <div className="mt-2 sm:mt-3 h-1.5 sm:h-2 bg-muted rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-purple to-pink rounded-full w-[85%]" />
-                    </div>
+                {/* Play Button */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center shadow-2xl shadow-red-600/50 group-hover:scale-110 transition-all duration-300 animate-pulse-slow">
+                    <Play className="w-8 h-8 sm:w-10 sm:h-10 text-white ml-1" fill="currentColor" />
                   </div>
                 </div>
-              </div>
 
-              <div
-                className="absolute -left-4 sm:-left-8 top-12 sm:top-16 bg-card border border-primary/30 rounded-lg sm:rounded-xl p-2.5 sm:p-4 shadow-xl shadow-primary/10 hidden sm:block animate-bounce-in"
-                style={{ animationDelay: "0.5s" }}
-              >
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 gradient-bg rounded-full flex items-center justify-center">
-                    <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] sm:text-xs text-muted-foreground">Returns</p>
-                    <p className="font-bold text-card-foreground text-sm sm:text-base">14-22% p.a.</p>
-                  </div>
+                {/* Watch on YouTube Badge */}
+                <div className="absolute bottom-4 left-4 bg-black/80 backdrop-blur-sm px-3 py-1.5 rounded-md flex items-center gap-2">
+                  <svg className="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                  <span className="text-white text-xs font-medium">Watch on YouTube</span>
                 </div>
-              </div>
 
-              <div
-                className="absolute -right-2 sm:-right-4 bottom-20 sm:bottom-24 bg-card border border-accent/30 rounded-lg sm:rounded-xl p-2.5 sm:p-4 shadow-xl shadow-accent/10 hidden sm:block animate-bounce-in"
-                style={{ animationDelay: "0.7s" }}
-              >
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 gradient-bg-warm rounded-full flex items-center justify-center">
-                    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] sm:text-xs text-muted-foreground">Verified</p>
-                    <p className="font-bold text-card-foreground text-sm sm:text-base">100+ Businesses</p>
-                  </div>
+                {/* Copy Link Badge */}
+                <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm px-3 py-1.5 rounded-md flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  <span className="text-white text-xs font-medium">Copy link</span>
                 </div>
               </div>
             </div>
