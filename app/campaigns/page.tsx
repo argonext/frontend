@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { Search, Filter, Leaf } from "lucide-react"
+import { Search, Filter, Leaf, ChevronLeft, ChevronRight } from "lucide-react"
 import { CampaignCard } from "@/components/campaign-card"
 import { Campaign } from "@/lib/types/campaign"
 import { campaignService } from "@/lib/api/campaign-service"
@@ -28,10 +28,13 @@ export default function CampaignsPage() {
     const [selectedStatus, setSelectedStatus] = useState("All")
     const [campaigns, setCampaigns] = useState<Campaign[]>([])
     const [loading, setLoading] = useState(true)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [totalPages, setTotalPages] = useState(1)
+    const itemsPerPage = 12
 
     useEffect(() => {
         fetchCampaigns()
-    }, [searchQuery, selectedCategory, selectedStatus])
+    }, [searchQuery, selectedCategory, selectedStatus, currentPage])
 
     const fetchCampaigns = async () => {
         try {
@@ -41,7 +44,11 @@ export default function CampaignsPage() {
                 status: selectedStatus,
                 search: searchQuery,
             })
-            setCampaigns(response.data)
+            const allCampaigns = response.data
+            setTotalPages(Math.ceil(allCampaigns.length / itemsPerPage))
+            const startIndex = (currentPage - 1) * itemsPerPage
+            const endIndex = startIndex + itemsPerPage
+            setCampaigns(allCampaigns.slice(startIndex, endIndex))
         } catch (error) {
             console.error("Error fetching campaigns:", error)
         } finally {
@@ -179,6 +186,56 @@ export default function CampaignsPage() {
                             {campaigns.map((campaign) => (
                                 <CampaignCard key={campaign.id} campaign={campaign} />
                             ))}
+                        </div>
+                    )}
+
+                    {/* Pagination */}
+                    {!loading && campaigns.length > 0 && totalPages > 1 && (
+                        <div className="flex items-center justify-center gap-2 mt-8 sm:mt-12">
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                                disabled={currentPage === 1}
+                                className="h-9 w-9 p-0"
+                            >
+                                <ChevronLeft className="w-4 h-4" />
+                            </Button>
+
+                            <div className="flex items-center gap-1">
+                                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+                                    if (
+                                        page === 1 ||
+                                        page === totalPages ||
+                                        (page >= currentPage - 1 && page <= currentPage + 1)
+                                    ) {
+                                        return (
+                                            <Button
+                                                key={page}
+                                                variant={currentPage === page ? "default" : "outline"}
+                                                size="sm"
+                                                onClick={() => setCurrentPage(page)}
+                                                className="h-9 w-9 p-0"
+                                            >
+                                                {page}
+                                            </Button>
+                                        )
+                                    } else if (page === currentPage - 2 || page === currentPage + 2) {
+                                        return <span key={page} className="px-2 text-muted-foreground">...</span>
+                                    }
+                                    return null
+                                })}
+                            </div>
+
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                                disabled={currentPage === totalPages}
+                                className="h-9 w-9 p-0"
+                            >
+                                <ChevronRight className="w-4 h-4" />
+                            </Button>
                         </div>
                     )}
                 </div>

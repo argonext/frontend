@@ -96,7 +96,7 @@ export function CampaignCard({ campaign, className = "" }: CampaignCardProps) {
                         <p className="text-[10px] sm:text-xs text-muted-foreground">{campaign.durationMonths} months</p>
                     </div>
                     <div>
-                        <p className="text-xs sm:text-sm font-semibold text-primary leading-tight">
+                        <p className="text-xs sm:text-sm font-semibold text-primary">
                             {campaign.totalReturnPercentage}% <span className="hidden sm:inline">return in</span><span className="sm:hidden">/</span> {campaign.durationMonths}m
                         </p>
                     </div>

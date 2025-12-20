@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
@@ -14,7 +15,6 @@ const footerLinks = {
   invest: [
     { label: "Campaigns", href: "/campaigns" },
     { label: "Reports", href: "/reports" },
-    { label: "Apply for Financing", href: "/apply" },
   ],
   support: [
     { label: "FAQ", href: "/faq" },
@@ -74,13 +74,16 @@ export function Footer() {
         >
           {/* Brand Column */}
           <div className="col-span-2 sm:col-span-4 lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-3 sm:mb-4 group">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 gradient-bg rounded-lg flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
-                <span className="text-white font-bold text-base sm:text-xl">A</span>
-              </div>
-              <span className="font-bold text-lg sm:text-xl">
-                Agro<span className="text-primary">Next</span>
-              </span>
+            <Link href="/" className="inline-flex items-center mb-3 sm:mb-4 group">
+              {/* <div className="rounded-lg px-3 py-1.5 transition-all"> */}
+              <Image
+                src="/logo.png"
+                alt="AgroNext Logo"
+                width={120}
+                height={35}
+                className="md:h-12 h-8 w-auto"
+              />
+              {/* </div> */}
             </Link>
             <p className="text-hero-foreground/60 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 max-w-xs">
               Shariah-compliant agricultural investments. Grow your wealth while making a positive impact.

@@ -135,16 +135,16 @@ export default function CampaignDetailPage() {
             {/* Breadcrumb */}
             <section className="bg-hero-bg pt-20 pb-4">
                 <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center gap-2 text-sm text-hero-foreground/60">
-                        <Link href="/" className="hover:text-primary transition-colors">
+                    <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-hero-foreground/60 overflow-x-auto scrollbar-hide">
+                        <Link href="/" className="hover:text-primary transition-colors whitespace-nowrap flex items-center">
                             Home
                         </Link>
-                        <ChevronRight className="w-4 h-4" />
-                        <Link href="/campaigns" className="hover:text-primary transition-colors">
+                        <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0 mt-0.5 sm:mt-0" />
+                        <Link href="/campaigns" className="hover:text-primary transition-colors whitespace-nowrap flex items-center">
                             Campaigns
                         </Link>
-                        <ChevronRight className="w-4 h-4" />
-                        <span className="text-hero-foreground">{campaign.title}</span>
+                        <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0 mt-0.5 sm:mt-0" />
+                        <span className="text-hero-foreground truncate max-w-[150px] sm:max-w-none flex items-center">{campaign.title}</span>
                     </div>
                 </div>
             </section>
@@ -383,9 +383,11 @@ export default function CampaignDetailPage() {
                                 </>
                             ) : (
                                 <>
-                                    <Button className="w-full mb-2 sm:mb-3 bg-primary hover:bg-primary/90 text-white text-sm sm:text-base h-10 sm:h-11">
-                                        Invest Now
-                                    </Button>
+                                    <Link href="/app" className="block w-full">
+                                        <Button className="w-full mb-2 sm:mb-3 bg-primary hover:bg-primary/90 text-white text-sm sm:text-base h-10 sm:h-11">
+                                            Get App to Invest
+                                        </Button>
+                                    </Link>
                                     <p className="text-[10px] sm:text-xs text-center text-muted-foreground">
                                         Minimum investment: {formatCurrency(campaign.minInvestment)}
                                     </p>

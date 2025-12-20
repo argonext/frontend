@@ -342,14 +342,9 @@ export default function ContactPage() {
                         Start your ethical investment journey or apply for business financing today.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/campaigns">
+                        <Link href="/app">
                             <Button className="bg-white text-primary hover:bg-white/90 px-8 py-3 h-auto font-semibold">
-                                View Campaigns
-                            </Button>
-                        </Link>
-                        <Link href="/apply">
-                            <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-3 h-auto">
-                                Apply for Financing
+                                Get the App
                             </Button>
                         </Link>
                     </div>

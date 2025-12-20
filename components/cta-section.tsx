@@ -49,24 +49,14 @@ export function CTASection() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12">
-            <Link href="/campaigns">
+            <Link href="/app">
               <Button
                 size="lg"
-                className="gradient-bg hover:opacity-90 text-white gap-2 h-12 sm:h-14 px-6 sm:px-10 w-full sm:w-auto text-sm sm:text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-1 hover:scale-105 group active:scale-95"
+                className="gradient-bg hover:opacity-90 text-white gap-2 h-12 sm:h-14 px-6 sm:px-10 w-full sm:w-auto text-sm sm:text-base shadow-lg shadow-black/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-1 hover:scale-105 group active:scale-95"
               >
                 <Users className="w-4 h-4 sm:w-5 sm:h-5" />
-                View Campaigns
+                Download App
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-            <Link href="/apply">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/30 text-hero-foreground hover:bg-white/10 hover:border-accent/50 gap-2 h-12 sm:h-14 px-6 sm:px-10 w-full sm:w-auto text-sm sm:text-base bg-transparent transition-all duration-300 hover:scale-105 group active:scale-95"
-              >
-                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
-                Get Financing
               </Button>
             </Link>
           </div>

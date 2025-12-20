@@ -27,15 +27,6 @@ const exploreLinks = [
         iconColor: "text-accent",
     },
     {
-        title: "Get Financing",
-        description: "Apply for Shariah-compliant business financing",
-        href: "/apply",
-        icon: TrendingUp,
-        gradient: "from-purple/20 to-pink/20",
-        iconBg: "bg-purple/10",
-        iconColor: "text-purple",
-    },
-    {
         title: "Project Reports",
         description: "View completed project reports and returns",
         href: "/reports",

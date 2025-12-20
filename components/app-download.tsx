@@ -105,7 +105,7 @@ export function AppDownload({ variant = "section", showStats = true }: AppDownlo
                         </div>
 
                         {/* Phone Mockup */}
-                        <div className="hidden lg:flex justify-center">
+                        <div className="hidden lg:flex justify-center md:justify-end">
                             <div className="relative">
                                 <div className="w-52 lg:w-64 h-[400px] lg:h-[500px] bg-gradient-to-b from-primary/20 to-primary/5 rounded-[2.5rem] lg:rounded-[3rem] border-4 border-white/20 flex items-center justify-center">
                                     <div className="text-center">

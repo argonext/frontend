@@ -357,11 +357,6 @@ export default function ReportsPage() {
                                 View Active Campaigns
                             </Button>
                         </Link>
-                        <Link href="/apply">
-                            <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-3 h-auto">
-                                Apply for Financing
-                            </Button>
-                        </Link>
                     </div>
                 </div>
             </section>

@@ -377,15 +377,10 @@ export default function AboutPage() {
                         Whether you&apos;re an investor looking for ethical opportunities or a business seeking financing, we&apos;re here to help you grow.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/campaigns">
+                        <Link href="/app">
                             <Button className="bg-white text-primary hover:bg-white/90 px-8 py-3 h-auto font-semibold">
-                                Start Investing
+                                Get the App
                                 <ArrowRight className="w-5 h-5 ml-2" />
-                            </Button>
-                        </Link>
-                        <Link href="/apply">
-                            <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-3 h-auto">
-                                Get Financing
                             </Button>
                         </Link>
                     </div>

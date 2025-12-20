@@ -346,9 +346,9 @@ export default function FAQPage() {
                         Join thousands of investors making a positive impact through ethical investments.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/campaigns">
+                        <Link href="/app">
                             <Button className="bg-white text-primary hover:bg-white/90 px-8 py-3 h-auto font-semibold">
-                                View Campaigns
+                                Get the App
                             </Button>
                         </Link>
                         <Link href="/contact">
