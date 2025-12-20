@@ -82,10 +82,10 @@ export default function ShariahPage() {
                         <Shield className="w-4 h-4" />
                         WE ARE STRICTLY
                     </span>
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-hero-foreground mb-6">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-hero-foreground mb-4 sm:mb-6">
                         <span className="gradient-text">SHARIAH</span> BASED
                     </h1>
-                    <p className="text-hero-foreground/70 text-lg max-w-3xl mx-auto mb-8">
+                    <p className="text-hero-foreground/70 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
                         Shariah Compliance is not merely a function here at AgroNext. We strictly hold our business conduct according to Islamic Shariah principles and values.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -134,31 +134,31 @@ export default function ShariahPage() {
                             </div>
                         </div>
 
-                        <div className="bg-card border border-border rounded-2xl p-8">
-                            <div className="flex items-center gap-4 mb-6">
-                                <div className="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center">
-                                    <Shield className="w-8 h-8 text-white" />
+                        <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8">
+                            <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                                <div className="w-12 h-12 sm:w-16 sm:h-16 gradient-bg rounded-lg sm:rounded-xl flex items-center justify-center">
+                                    <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-semibold">Shariah Made Simple</h3>
-                                    <p className="text-muted-foreground">Our compliance process</p>
+                                    <h3 className="text-lg sm:text-xl font-semibold">Shariah Made Simple</h3>
+                                    <p className="text-muted-foreground text-sm">Our compliance process</p>
                                 </div>
                             </div>
-                            <p className="text-muted-foreground mb-6">
+                            <p className="text-muted-foreground text-sm sm:text-base mb-4 sm:mb-6">
                                 Our Shariah supervisory board, along with our team, ensures Shariah compliance by:
                             </p>
-                            <div className="space-y-4">
+                            <div className="space-y-3 sm:space-y-4">
                                 {[
                                     "Verifying the platform's compliance with the advisors' decisions across all processes and contracts.",
                                     "Clarifying Shariah provisions in all financial and investment transactions on the platform.",
                                     "Receiving legal-related feedback, whether inside or outside the platform.",
                                     "Providing advice and guidance to maintain Shariah-compliance throughout all platform transactions."
                                 ].map((item, index) => (
-                                    <div key={index} className="flex items-start gap-3">
-                                        <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                            <CheckCircle className="w-4 h-4 text-primary" />
+                                    <div key={index} className="flex items-start gap-2 sm:gap-3">
+                                        <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                            <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
                                         </div>
-                                        <p className="text-sm text-foreground">{item}</p>
+                                        <p className="text-xs sm:text-sm text-foreground">{item}</p>
                                     </div>
                                 ))}
                             </div>
@@ -179,18 +179,18 @@ export default function ShariahPage() {
                         </p>
                     </div>
 
-                    <div className={`grid sm:grid-cols-2 lg:grid-cols-4 gap-6 ${principlesVisible ? "animate-fade-in-up" : "opacity-0"}`}>
+                    <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 ${principlesVisible ? "animate-fade-in-up" : "opacity-0"}`}>
                         {shariahPrinciples.map((principle, index) => (
                             <div
                                 key={index}
-                                className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:border-primary/30 transition-all duration-300"
+                                className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:shadow-lg hover:border-primary/30 transition-all duration-300"
                                 style={{ transitionDelay: `${index * 100}ms` }}
                             >
-                                <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mb-4">
-                                    <principle.icon className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 gradient-bg rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4">
+                                    <principle.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                 </div>
-                                <h3 className="text-lg font-semibold mb-2">{principle.title}</h3>
-                                <p className="text-sm text-muted-foreground">{principle.description}</p>
+                                <h3 className="text-base sm:text-lg font-semibold mb-2">{principle.title}</h3>
+                                <p className="text-xs sm:text-sm text-muted-foreground">{principle.description}</p>
                             </div>
                         ))}
                     </div>
@@ -209,21 +209,21 @@ export default function ShariahPage() {
                         </p>
                     </div>
 
-                    <div className={`grid sm:grid-cols-2 gap-6 ${contractsVisible ? "animate-fade-in-up" : "opacity-0"}`}>
+                    <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 ${contractsVisible ? "animate-fade-in-up" : "opacity-0"}`}>
                         {contractTypes.map((contract, index) => (
                             <div
                                 key={index}
-                                className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:border-primary/30 transition-all duration-300"
+                                className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:shadow-lg hover:border-primary/30 transition-all duration-300"
                             >
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                                        <BookOpen className="w-5 h-5 text-primary" />
+                                <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                                    <div className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                                        <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                                     </div>
-                                    <h3 className="text-xl font-semibold">{contract.name}</h3>
+                                    <h3 className="text-lg sm:text-xl font-semibold">{contract.name}</h3>
                                 </div>
-                                <p className="text-muted-foreground mb-4">{contract.description}</p>
-                                <div className="bg-muted rounded-lg px-4 py-2">
-                                    <p className="text-sm">
+                                <p className="text-muted-foreground text-sm sm:text-base mb-3 sm:mb-4">{contract.description}</p>
+                                <div className="bg-muted rounded-lg px-3 sm:px-4 py-2">
+                                    <p className="text-xs sm:text-sm">
                                         <span className="text-muted-foreground">Used for: </span>
                                         <span className="text-primary font-medium">{contract.usedFor}</span>
                                     </p>

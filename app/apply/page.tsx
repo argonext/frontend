@@ -163,10 +163,10 @@ export default function ApplyPage() {
                                 <Rocket className="w-4 h-4" />
                                 BUSINESS FINANCING
                             </span>
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-hero-foreground mb-6">
+                            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-hero-foreground mb-4 sm:mb-6">
                                 Grow Your Business with <span className="gradient-text">Shariah-Compliant</span> Financing
                             </h1>
-                            <p className="text-hero-foreground/70 text-lg mb-8">
+                            <p className="text-hero-foreground/70 text-sm sm:text-base lg:text-lg mb-6 sm:mb-8">
                                 Access working capital, expand operations, and fulfill large orders through our ethical, interest-free financing solutions designed for SMEs.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4">
@@ -185,26 +185,26 @@ export default function ApplyPage() {
                             </div>
                         </div>
 
-                        <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
-                            <h3 className="text-xl font-semibold text-hero-foreground mb-6">Quick Inquiry</h3>
-                            <form className="space-y-4">
+                        <div className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8">
+                            <h3 className="text-lg sm:text-xl font-semibold text-hero-foreground mb-4 sm:mb-6">Quick Inquiry</h3>
+                            <form className="space-y-3 sm:space-y-4">
                                 <div>
                                     <input
                                         type="text"
                                         placeholder="Business Name"
-                                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-hero-foreground placeholder:text-hero-foreground/50 focus:outline-none focus:border-primary"
+                                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-white/10 border border-white/20 text-sm sm:text-base text-hero-foreground placeholder:text-hero-foreground/50 focus:outline-none focus:border-primary"
                                     />
                                 </div>
                                 <div>
                                     <input
                                         type="tel"
                                         placeholder="Phone Number"
-                                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-hero-foreground placeholder:text-hero-foreground/50 focus:outline-none focus:border-primary"
+                                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-white/10 border border-white/20 text-sm sm:text-base text-hero-foreground placeholder:text-hero-foreground/50 focus:outline-none focus:border-primary"
                                     />
                                 </div>
                                 <div>
                                     <select
-                                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-hero-foreground/50 focus:outline-none focus:border-primary"
+                                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-white/10 border border-white/20 text-sm sm:text-base text-hero-foreground/50 focus:outline-none focus:border-primary"
                                     >
                                         <option value="">Financing Amount Needed</option>
                                         <option value="5-10">৳5 - ৳10 Lakh</option>
@@ -216,7 +216,7 @@ export default function ApplyPage() {
                                 </div>
                                 <div>
                                     <select
-                                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-hero-foreground/50 focus:outline-none focus:border-primary"
+                                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-white/10 border border-white/20 text-sm sm:text-base text-hero-foreground/50 focus:outline-none focus:border-primary"
                                     >
                                         <option value="">Financing Type</option>
                                         <option value="work-order">Work Order Financing</option>
@@ -225,7 +225,7 @@ export default function ApplyPage() {
                                         <option value="equipment">Equipment Financing</option>
                                     </select>
                                 </div>
-                                <Button className="w-full gradient-bg hover:opacity-90 text-white py-3 h-auto">
+                                <Button className="w-full gradient-bg hover:opacity-90 text-white py-2.5 sm:py-3 h-auto text-sm sm:text-base">
                                     Submit Inquiry
                                 </Button>
                             </form>
@@ -235,13 +235,13 @@ export default function ApplyPage() {
             </section>
 
             {/* Stats Bar */}
-            <section className="bg-card border-y border-border py-8">
+            <section className="bg-card border-y border-border py-6 sm:py-8">
                 <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                         {stats.map((stat, index) => (
                             <div key={index} className="text-center">
-                                <div className="text-2xl sm:text-3xl font-bold gradient-text">{stat.value}</div>
-                                <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
+                                <div className="text-xl sm:text-2xl lg:text-3xl font-bold gradient-text">{stat.value}</div>
+                                <div className="text-xs sm:text-sm text-muted-foreground mt-1">{stat.label}</div>
                             </div>
                         ))}
                     </div>
@@ -260,18 +260,18 @@ export default function ApplyPage() {
                         </p>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                         {financingTypes.map((type, index) => (
                             <div
                                 key={index}
-                                className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg hover:border-primary/30 transition-all duration-300"
+                                className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:shadow-lg hover:border-primary/30 transition-all duration-300"
                             >
-                                <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mb-4">
-                                    <type.icon className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 gradient-bg rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4">
+                                    <type.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                 </div>
-                                <h3 className="text-lg font-semibold mb-2">{type.title}</h3>
-                                <p className="text-sm text-muted-foreground mb-4">{type.description}</p>
-                                <div className="space-y-2 text-sm">
+                                <h3 className="text-base sm:text-lg font-semibold mb-2">{type.title}</h3>
+                                <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">{type.description}</p>
+                                <div className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
                                     <div className="flex justify-between">
                                         <span className="text-muted-foreground">Amount:</span>
                                         <span className="font-medium">{type.amount}</span>
@@ -299,18 +299,18 @@ export default function ApplyPage() {
                         </p>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                         {eligibilityCriteria.map((criteria, index) => (
                             <div
                                 key={index}
-                                className="flex items-start gap-4 bg-card border border-border rounded-xl p-6"
+                                className="flex items-start gap-3 sm:gap-4 bg-card border border-border rounded-lg sm:rounded-xl p-4 sm:p-6"
                             >
-                                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                    <criteria.icon className="w-5 h-5 text-primary" />
+                                <div className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <criteria.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold mb-1">{criteria.title}</h3>
-                                    <p className="text-sm text-muted-foreground">{criteria.description}</p>
+                                    <h3 className="font-semibold text-sm sm:text-base mb-1">{criteria.title}</h3>
+                                    <p className="text-xs sm:text-sm text-muted-foreground">{criteria.description}</p>
                                 </div>
                             </div>
                         ))}
@@ -330,18 +330,18 @@ export default function ApplyPage() {
                         </p>
                     </div>
 
-                    <div className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-6 ${stepsVisible ? "animate-fade-in-up" : "opacity-0"}`}>
+                    <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 ${stepsVisible ? "animate-fade-in-up" : "opacity-0"}`}>
                         {howItWorks.map((step, index) => (
                             <div
                                 key={index}
-                                className="relative bg-card border border-border rounded-2xl p-6"
+                                className="relative bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6"
                             >
-                                <div className="text-4xl font-bold gradient-text opacity-30 absolute top-4 right-4">
+                                <div className="text-2xl sm:text-4xl font-bold gradient-text opacity-30 absolute top-3 sm:top-4 right-3 sm:right-4">
                                     {step.step}
                                 </div>
                                 <div className="relative">
-                                    <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-                                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                                    <h3 className="text-base sm:text-lg font-semibold mb-2">{step.title}</h3>
+                                    <p className="text-xs sm:text-sm text-muted-foreground">{step.description}</p>
                                 </div>
                             </div>
                         ))}
@@ -358,19 +358,19 @@ export default function ApplyPage() {
                         </h2>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                         {[
                             { icon: Shield, title: "100% Shariah Compliant", description: "All contracts reviewed by certified Shariah advisors" },
                             { icon: Clock, title: "Fast Processing", description: "Get funded in as little as 2 weeks" },
                             { icon: Users, title: "Dedicated Support", description: "Personal relationship manager for your business" },
                             { icon: Award, title: "Flexible Terms", description: "Customized repayment schedules based on your cash flow" },
                         ].map((item, index) => (
-                            <div key={index} className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
-                                <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mx-auto mb-4">
-                                    <item.icon className="w-6 h-6 text-white" />
+                            <div key={index} className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 gradient-bg rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                                    <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                 </div>
-                                <h3 className="text-lg font-semibold text-hero-foreground mb-2">{item.title}</h3>
-                                <p className="text-sm text-hero-foreground/70">{item.description}</p>
+                                <h3 className="text-base sm:text-lg font-semibold text-hero-foreground mb-2">{item.title}</h3>
+                                <p className="text-xs sm:text-sm text-hero-foreground/70">{item.description}</p>
                             </div>
                         ))}
                     </div>
@@ -386,11 +386,11 @@ export default function ApplyPage() {
                         </h2>
                     </div>
 
-                    <div className="max-w-3xl mx-auto space-y-4">
+                    <div className="max-w-3xl mx-auto space-y-3 sm:space-y-4">
                         {faqs.map((faq, index) => (
-                            <div key={index} className="bg-card border border-border rounded-xl p-6">
-                                <h3 className="font-semibold mb-2">{faq.question}</h3>
-                                <p className="text-sm text-muted-foreground">{faq.answer}</p>
+                            <div key={index} className="bg-card border border-border rounded-lg sm:rounded-xl p-4 sm:p-6">
+                                <h3 className="font-semibold text-sm sm:text-base mb-2">{faq.question}</h3>
+                                <p className="text-xs sm:text-sm text-muted-foreground">{faq.answer}</p>
                             </div>
                         ))}
                     </div>

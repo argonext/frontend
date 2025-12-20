@@ -163,22 +163,22 @@ export default function FAQPage() {
                         <HelpCircle className="w-4 h-4" />
                         HELP CENTER
                     </span>
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-hero-foreground mb-6">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-hero-foreground mb-4 sm:mb-6">
                         Frequently Asked <span className="gradient-text">Questions</span>
                     </h1>
-                    <p className="text-hero-foreground/70 text-lg max-w-3xl mx-auto mb-8">
+                    <p className="text-hero-foreground/70 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
                         Find answers to common questions about investing, Shariah compliance, and business financing.
                     </p>
 
                     {/* Search */}
-                    <div className="max-w-2xl mx-auto relative">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-hero-foreground/50" />
+                    <div className="max-w-2xl mx-auto relative px-4 sm:px-0">
+                        <Search className="absolute left-8 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-hero-foreground/50" />
                         <input
                             type="text"
                             placeholder="Search for answers..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/10 border border-white/20 text-hero-foreground placeholder:text-hero-foreground/50 focus:outline-none focus:border-primary"
+                            className="w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 rounded-xl bg-white/10 border border-white/20 text-sm sm:text-base text-hero-foreground placeholder:text-hero-foreground/50 focus:outline-none focus:border-primary"
                         />
                     </div>
                 </div>
@@ -191,7 +191,23 @@ export default function FAQPage() {
                         {/* Category Sidebar */}
                         {!searchQuery && (
                             <div className="lg:col-span-1">
-                                <div className="bg-card border border-border rounded-2xl p-4 sticky top-24">
+                                {/* Mobile horizontal scroll */}
+                                <div className="lg:hidden flex overflow-x-auto gap-2 pb-4 -mx-4 px-4 scrollbar-hide">
+                                    {faqCategories.map((category) => (
+                                        <button
+                                            key={category.name}
+                                            onClick={() => setActiveCategory(category.name)}
+                                            className={`flex-shrink-0 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeCategory === category.name
+                                                ? "gradient-bg text-white"
+                                                : "bg-card border border-border text-muted-foreground hover:text-foreground"
+                                                }`}
+                                        >
+                                            {category.name} ({category.faqs.length})
+                                        </button>
+                                    ))}
+                                </div>
+                                {/* Desktop sidebar */}
+                                <div className="hidden lg:block bg-card border border-border rounded-2xl p-4 sticky top-24">
                                     <h3 className="font-semibold mb-4">Categories</h3>
                                     <nav className="space-y-1">
                                         {faqCategories.map((category) => (
@@ -199,8 +215,8 @@ export default function FAQPage() {
                                                 key={category.name}
                                                 onClick={() => setActiveCategory(category.name)}
                                                 className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all ${activeCategory === category.name
-                                                        ? "gradient-bg text-white"
-                                                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                                                    ? "gradient-bg text-white"
+                                                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
                                                     }`}
                                             >
                                                 {category.name}
@@ -231,22 +247,22 @@ export default function FAQPage() {
                                         {category.faqs.map((faq, index) => (
                                             <div
                                                 key={index}
-                                                className="bg-card border border-border rounded-xl overflow-hidden"
+                                                className="bg-card border border-border rounded-lg sm:rounded-xl overflow-hidden"
                                             >
                                                 <button
                                                     onClick={() => toggleFaq(faq.question)}
-                                                    className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-muted/50 transition-colors"
+                                                    className="w-full px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between text-left hover:bg-muted/50 transition-colors"
                                                 >
-                                                    <span className="font-medium pr-4">{faq.question}</span>
+                                                    <span className="font-medium pr-4 text-sm sm:text-base">{faq.question}</span>
                                                     {openFaqs.includes(faq.question) ? (
-                                                        <ChevronUp className="w-5 h-5 text-primary flex-shrink-0" />
+                                                        <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
                                                     ) : (
-                                                        <ChevronDown className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                                                        <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground flex-shrink-0" />
                                                     )}
                                                 </button>
                                                 {openFaqs.includes(faq.question) && (
-                                                    <div className="px-6 pb-4">
-                                                        <p className="text-muted-foreground">{faq.answer}</p>
+                                                    <div className="px-4 sm:px-6 pb-3 sm:pb-4">
+                                                        <p className="text-muted-foreground text-sm sm:text-base">{faq.answer}</p>
                                                     </div>
                                                 )}
                                             </div>
@@ -279,39 +295,39 @@ export default function FAQPage() {
                         </p>
                     </div>
 
-                    <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                        <div className="bg-card border border-border rounded-2xl p-6 text-center hover:shadow-lg hover:border-primary/30 transition-all">
-                            <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mx-auto mb-4">
-                                <MessageCircle className="w-6 h-6 text-white" />
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
+                        <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-lg hover:border-primary/30 transition-all">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 gradient-bg rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                                <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                             </div>
-                            <h3 className="font-semibold mb-2">Live Chat</h3>
-                            <p className="text-sm text-muted-foreground mb-4">Chat with our support team</p>
-                            <Button variant="outline" className="w-full">
+                            <h3 className="font-semibold text-sm sm:text-base mb-1 sm:mb-2">Live Chat</h3>
+                            <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">Chat with our support team</p>
+                            <Button variant="outline" className="w-full text-xs sm:text-sm h-9 sm:h-10">
                                 Start Chat
                             </Button>
                         </div>
 
-                        <div className="bg-card border border-border rounded-2xl p-6 text-center hover:shadow-lg hover:border-primary/30 transition-all">
-                            <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mx-auto mb-4">
-                                <Phone className="w-6 h-6 text-white" />
+                        <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-lg hover:border-primary/30 transition-all">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 gradient-bg rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                                <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                             </div>
-                            <h3 className="font-semibold mb-2">Call Us</h3>
-                            <p className="text-sm text-muted-foreground mb-4">Sat-Thu, 9AM-6PM</p>
+                            <h3 className="font-semibold text-sm sm:text-base mb-1 sm:mb-2">Call Us</h3>
+                            <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">Sat-Thu, 9AM-6PM</p>
                             <Link href="tel:+8801XXX">
-                                <Button variant="outline" className="w-full">
+                                <Button variant="outline" className="w-full text-xs sm:text-sm h-9 sm:h-10">
                                     +880 1XXX-XXXXXX
                                 </Button>
                             </Link>
                         </div>
 
-                        <div className="bg-card border border-border rounded-2xl p-6 text-center hover:shadow-lg hover:border-primary/30 transition-all">
-                            <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mx-auto mb-4">
-                                <Mail className="w-6 h-6 text-white" />
+                        <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-lg hover:border-primary/30 transition-all">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 gradient-bg rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                                <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                             </div>
-                            <h3 className="font-semibold mb-2">Email</h3>
-                            <p className="text-sm text-muted-foreground mb-4">We&apos;ll respond within 24hrs</p>
+                            <h3 className="font-semibold text-sm sm:text-base mb-1 sm:mb-2">Email</h3>
+                            <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">We&apos;ll respond within 24hrs</p>
                             <Link href="mailto:support@agronext.com">
-                                <Button variant="outline" className="w-full">
+                                <Button variant="outline" className="w-full text-xs sm:text-sm h-9 sm:h-10">
                                     Send Email
                                 </Button>
                             </Link>

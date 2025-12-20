@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "InvestBD - Smart Investment Platform",
+  title: "Agronext - Smart Investment Platform",
   description:
     "Start investing in verified businesses with as low as ৳5,000. Join thousands of investors building wealth through ethical and transparent investments.",
   keywords: ["investment", "crowdfunding", "startup investing", "Bangladesh", "fintech"],

@@ -93,10 +93,10 @@ export default function ContactPage() {
                         <MessageCircle className="w-4 h-4" />
                         GET IN TOUCH
                     </span>
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-hero-foreground mb-6">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-hero-foreground mb-4 sm:mb-6">
                         Contact <span className="gradient-text">Us</span>
                     </h1>
-                    <p className="text-hero-foreground/70 text-lg max-w-3xl mx-auto">
+                    <p className="text-hero-foreground/70 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto px-4">
                         Have questions about investing, financing, or our platform? We&apos;re here to help. Reach out to our team anytime.
                     </p>
                 </div>
@@ -105,19 +105,19 @@ export default function ContactPage() {
             {/* Contact Methods */}
             <section className="py-12 sm:py-16 bg-card border-b border-border">
                 <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid sm:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                         {contactMethods.map((method, index) => (
                             <Link
                                 key={index}
                                 href={method.link}
-                                className="bg-background border border-border rounded-2xl p-6 text-center hover:shadow-lg hover:border-primary/30 transition-all duration-300"
+                                className="bg-background border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-lg hover:border-primary/30 transition-all duration-300"
                             >
-                                <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mx-auto mb-4">
-                                    <method.icon className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 gradient-bg rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                                    <method.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                 </div>
-                                <h3 className="font-semibold mb-1">{method.title}</h3>
-                                <p className="text-sm text-muted-foreground mb-2">{method.description}</p>
-                                <p className="text-primary font-medium">{method.value}</p>
+                                <h3 className="font-semibold text-sm sm:text-base mb-1">{method.title}</h3>
+                                <p className="text-xs sm:text-sm text-muted-foreground mb-2">{method.description}</p>
+                                <p className="text-primary font-medium text-sm sm:text-base">{method.value}</p>
                                 <p className="text-xs text-muted-foreground mt-2">
                                     <Clock className="w-3 h-3 inline mr-1" />
                                     {method.availability}
@@ -221,23 +221,23 @@ export default function ContactPage() {
                                     {offices.map((office, index) => (
                                         <div
                                             key={index}
-                                            className="bg-card border border-border rounded-2xl p-6"
+                                            className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6"
                                         >
-                                            <h3 className="font-semibold text-lg mb-4">{office.city}</h3>
-                                            <div className="space-y-3">
-                                                <div className="flex items-start gap-3">
-                                                    <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                                                    <span className="text-muted-foreground">{office.address}</span>
+                                            <h3 className="font-semibold text-base sm:text-lg mb-3 sm:mb-4">{office.city}</h3>
+                                            <div className="space-y-2 sm:space-y-3">
+                                                <div className="flex items-start gap-2 sm:gap-3">
+                                                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0 mt-0.5" />
+                                                    <span className="text-muted-foreground text-sm sm:text-base">{office.address}</span>
                                                 </div>
-                                                <div className="flex items-center gap-3">
-                                                    <Phone className="w-5 h-5 text-primary" />
-                                                    <Link href={`tel:${office.phone}`} className="text-muted-foreground hover:text-primary">
+                                                <div className="flex items-center gap-2 sm:gap-3">
+                                                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                                                    <Link href={`tel:${office.phone}`} className="text-muted-foreground hover:text-primary text-sm sm:text-base">
                                                         {office.phone}
                                                     </Link>
                                                 </div>
-                                                <div className="flex items-center gap-3">
-                                                    <Mail className="w-5 h-5 text-primary" />
-                                                    <Link href={`mailto:${office.email}`} className="text-muted-foreground hover:text-primary">
+                                                <div className="flex items-center gap-2 sm:gap-3">
+                                                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                                                    <Link href={`mailto:${office.email}`} className="text-muted-foreground hover:text-primary text-sm sm:text-base">
                                                         {office.email}
                                                     </Link>
                                                 </div>
@@ -248,9 +248,9 @@ export default function ContactPage() {
                             </div>
 
                             {/* Business Hours */}
-                            <div className="bg-card border border-border rounded-2xl p-6">
-                                <h3 className="font-semibold text-lg mb-4">Business Hours</h3>
-                                <div className="space-y-2 text-muted-foreground">
+                            <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                                <h3 className="font-semibold text-base sm:text-lg mb-3 sm:mb-4">Business Hours</h3>
+                                <div className="space-y-2 text-muted-foreground text-sm sm:text-base">
                                     <div className="flex justify-between">
                                         <span>Saturday - Thursday</span>
                                         <span className="font-medium text-foreground">9:00 AM - 6:00 PM</span>
@@ -263,17 +263,17 @@ export default function ContactPage() {
                             </div>
 
                             {/* Social Links */}
-                            <div className="bg-card border border-border rounded-2xl p-6">
-                                <h3 className="font-semibold text-lg mb-4">Follow Us</h3>
-                                <div className="flex gap-4">
+                            <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                                <h3 className="font-semibold text-base sm:text-lg mb-3 sm:mb-4">Follow Us</h3>
+                                <div className="flex gap-3 sm:gap-4">
                                     {socialLinks.map((social, index) => (
                                         <Link
                                             key={index}
                                             href={social.link}
                                             target="_blank"
-                                            className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+                                            className="w-9 h-9 sm:w-10 sm:h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-all"
                                         >
-                                            <social.icon className="w-5 h-5" />
+                                            <social.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                                         </Link>
                                     ))}
                                 </div>
@@ -310,14 +310,14 @@ export default function ContactPage() {
                         </p>
                     </div>
 
-                    <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
                         {faqs.map((faq, index) => (
                             <div
                                 key={index}
-                                className="bg-card border border-border rounded-xl p-6"
+                                className="bg-card border border-border rounded-lg sm:rounded-xl p-4 sm:p-6"
                             >
-                                <h3 className="font-semibold mb-2">{faq.question}</h3>
-                                <p className="text-sm text-muted-foreground">{faq.answer}</p>
+                                <h3 className="font-semibold text-sm sm:text-base mb-2">{faq.question}</h3>
+                                <p className="text-xs sm:text-sm text-muted-foreground">{faq.answer}</p>
                             </div>
                         ))}
                     </div>

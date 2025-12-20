@@ -132,7 +132,7 @@ export default function LoginPage() {
 
                 {/* Welcome Text */}
                 <h1 className="text-hero-foreground text-xl sm:text-2xl font-bold text-center mb-1 sm:mb-2">
-                    Welcome to <span className="text-primary">InvestBD</span>
+                    Welcome to <span className="text-primary">Agronext</span>
                 </h1>
                 <p className="text-hero-foreground/60 text-center text-sm sm:text-base mb-4 sm:mb-6">Sign in to continue</p>
 

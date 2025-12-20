@@ -119,33 +119,33 @@ export default function AboutPage() {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="bg-hero-bg pt-24 pb-16 sm:pt-28 sm:pb-24 relative overflow-hidden">
+            <section className="bg-hero-bg pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-24 relative overflow-hidden">
                 <div className="absolute inset-0">
-                    <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-pulse-slow" />
-                    <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
+                    <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/20 rounded-full blur-3xl animate-pulse-slow" />
+                    <div className="absolute bottom-10 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
                 </div>
                 <div ref={heroRef} className={`relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 text-center ${heroVisible ? "animate-fade-in-up" : "opacity-0"}`}>
-                    <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-                        <Leaf className="w-4 h-4" />
+                    <span className="inline-flex items-center gap-1.5 sm:gap-2 bg-primary/10 text-primary px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+                        <Leaf className="w-3 h-3 sm:w-4 sm:h-4" />
                         OUR STORY
                     </span>
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-hero-foreground mb-6">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-hero-foreground mb-4 sm:mb-6">
                         Transforming Agriculture Through <span className="gradient-text">Ethical Investment</span>
                     </h1>
-                    <p className="text-hero-foreground/70 text-lg max-w-3xl mx-auto mb-8">
+                    <p className="text-hero-foreground/70 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto mb-6 sm:mb-8">
                         AgroNext is Bangladesh&apos;s leading Shariah-compliant agricultural investment platform, connecting conscious investors with impactful businesses.
                     </p>
                 </div>
             </section>
 
             {/* Stats Bar */}
-            <section className="bg-card border-y border-border py-8">
+            <section className="bg-card border-y border-border py-6 sm:py-8">
                 <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                         {stats.map((stat, index) => (
                             <div key={index} className="text-center">
-                                <div className="text-2xl sm:text-3xl font-bold gradient-text">{stat.value}</div>
-                                <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
+                                <div className="text-xl sm:text-2xl lg:text-3xl font-bold gradient-text">{stat.value}</div>
+                                <div className="text-xs sm:text-sm text-muted-foreground mt-1">{stat.label}</div>
                             </div>
                         ))}
                     </div>
@@ -153,25 +153,25 @@ export default function AboutPage() {
             </section>
 
             {/* Mission & Vision */}
-            <section ref={missionRef} className="py-16 sm:py-24">
+            <section ref={missionRef} className="py-12 sm:py-16 lg:py-24">
                 <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className={`grid lg:grid-cols-2 gap-12 ${missionVisible ? "animate-fade-in-up" : "opacity-0"}`}>
-                        <div className="bg-card border border-border rounded-2xl p-8">
-                            <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mb-6">
-                                <Target className="w-6 h-6 text-white" />
+                    <div className={`grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 ${missionVisible ? "animate-fade-in-up" : "opacity-0"}`}>
+                        <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 gradient-bg rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-6">
+                                <Target className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                             </div>
-                            <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
-                            <p className="text-muted-foreground leading-relaxed">
+                            <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Our Mission</h2>
+                            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                                 To democratize access to ethical agricultural investments while empowering SMEs with Shariah-compliant financing. We believe that everyone deserves the opportunity to grow their wealth while making a positive impact on society and the environment.
                             </p>
                         </div>
 
-                        <div className="bg-card border border-border rounded-2xl p-8">
-                            <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mb-6">
-                                <Lightbulb className="w-6 h-6 text-white" />
+                        <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 gradient-bg rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-6">
+                                <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                             </div>
-                            <h2 className="text-2xl font-bold mb-4">Our Vision</h2>
-                            <p className="text-muted-foreground leading-relaxed">
+                            <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Our Vision</h2>
+                            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                                 To become the most trusted and impactful Islamic finance platform in South Asia, driving sustainable growth in agriculture while delivering exceptional returns to our investors through ethical business practices.
                             </p>
                         </div>
@@ -180,27 +180,27 @@ export default function AboutPage() {
             </section>
 
             {/* Our Values */}
-            <section className="py-16 sm:py-24 bg-muted/30">
+            <section className="py-12 sm:py-16 lg:py-24 bg-muted/30">
                 <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                    <div className="text-center mb-8 sm:mb-12">
+                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
                             Our Core <span className="gradient-text">Values</span>
                         </h2>
-                        <p className="text-muted-foreground max-w-2xl mx-auto">
+                        <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
                             These principles guide everything we do at AgroNext.
                         </p>
                     </div>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
                         {values.map((value, index) => (
                             <div
                                 key={index}
-                                className="bg-card border border-border rounded-2xl p-6 text-center hover:shadow-lg hover:border-primary/30 transition-all duration-300"
+                                className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-lg hover:border-primary/30 transition-all duration-300"
                             >
-                                <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mx-auto mb-4">
-                                    <value.icon className="w-6 h-6 text-white" />
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 gradient-bg rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                                    <value.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                 </div>
-                                <h3 className="text-lg font-semibold mb-2">{value.title}</h3>
+                                <h3 className="text-base sm:text-lg font-semibold mb-2">{value.title}</h3>
                                 <p className="text-sm text-muted-foreground">{value.description}</p>
                             </div>
                         ))}
@@ -267,14 +267,14 @@ export default function AboutPage() {
                         {team.map((member, index) => (
                             <div
                                 key={index}
-                                className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all"
+                                className="bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all"
                             >
-                                <div className="w-24 h-24 gradient-bg rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <Users className="w-10 h-10 text-white" />
+                                <div className="w-16 h-16 sm:w-24 sm:h-24 gradient-bg rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                                    <Users className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                                 </div>
-                                <h3 className="text-lg font-semibold text-hero-foreground">{member.name}</h3>
-                                <p className="text-primary text-sm mb-2">{member.role}</p>
-                                <p className="text-hero-foreground/60 text-sm mb-4">{member.bio}</p>
+                                <h3 className="text-base sm:text-lg font-semibold text-hero-foreground">{member.name}</h3>
+                                <p className="text-primary text-xs sm:text-sm mb-2">{member.role}</p>
+                                <p className="text-hero-foreground/60 text-xs sm:text-sm mb-3 sm:mb-4">{member.bio}</p>
                                 <Link href={member.linkedin} className="inline-flex items-center gap-2 text-hero-foreground/70 hover:text-primary">
                                     <Linkedin className="w-4 h-4" />
                                 </Link>
@@ -316,26 +316,26 @@ export default function AboutPage() {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="bg-card border border-border rounded-2xl p-6 text-center">
-                                <Globe className="w-10 h-10 text-primary mx-auto mb-3" />
-                                <h4 className="font-semibold mb-1">64 Districts</h4>
-                                <p className="text-sm text-muted-foreground">Coverage across Bangladesh</p>
+                        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                            <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
+                                <Globe className="w-8 h-8 sm:w-10 sm:h-10 text-primary mx-auto mb-2 sm:mb-3" />
+                                <h4 className="text-sm sm:text-base font-semibold mb-1">64 Districts</h4>
+                                <p className="text-xs sm:text-sm text-muted-foreground">Coverage across Bangladesh</p>
                             </div>
-                            <div className="bg-card border border-border rounded-2xl p-6 text-center">
-                                <TrendingUp className="w-10 h-10 text-primary mx-auto mb-3" />
-                                <h4 className="font-semibold mb-1">100% Track Record</h4>
-                                <p className="text-sm text-muted-foreground">On-time returns delivery</p>
+                            <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
+                                <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10 text-primary mx-auto mb-2 sm:mb-3" />
+                                <h4 className="text-sm sm:text-base font-semibold mb-1">100% Track Record</h4>
+                                <p className="text-xs sm:text-sm text-muted-foreground">On-time returns delivery</p>
                             </div>
-                            <div className="bg-card border border-border rounded-2xl p-6 text-center">
-                                <Building className="w-10 h-10 text-primary mx-auto mb-3" />
-                                <h4 className="font-semibold mb-1">150+ Businesses</h4>
-                                <p className="text-sm text-muted-foreground">Successfully funded</p>
+                            <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
+                                <Building className="w-8 h-8 sm:w-10 sm:h-10 text-primary mx-auto mb-2 sm:mb-3" />
+                                <h4 className="text-sm sm:text-base font-semibold mb-1">150+ Businesses</h4>
+                                <p className="text-xs sm:text-sm text-muted-foreground">Successfully funded</p>
                             </div>
-                            <div className="bg-card border border-border rounded-2xl p-6 text-center">
-                                <Award className="w-10 h-10 text-primary mx-auto mb-3" />
-                                <h4 className="font-semibold mb-1">AAOIFI Certified</h4>
-                                <p className="text-sm text-muted-foreground">Shariah compliant</p>
+                            <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
+                                <Award className="w-8 h-8 sm:w-10 sm:h-10 text-primary mx-auto mb-2 sm:mb-3" />
+                                <h4 className="text-sm sm:text-base font-semibold mb-1">AAOIFI Certified</h4>
+                                <p className="text-xs sm:text-sm text-muted-foreground">Shariah compliant</p>
                             </div>
                         </div>
                     </div>
