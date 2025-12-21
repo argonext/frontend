@@ -23,6 +23,8 @@ export interface Campaign {
     annualizedReturn: string // e.g., "15%", "14.5% - 18.5%"
     durationMonths: number
     totalReturnPercentage: number // Calculated return for the duration
+    extraProfitActivated?: boolean // Extra profit feature flag
+    extraProfitMessage?: string // e.g., "Extra profit activated. Expires soon!"
 
     // Timeline
     daysLeft: number

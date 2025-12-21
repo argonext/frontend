@@ -17,8 +17,10 @@ export function FeaturedInvestments() {
   useEffect(() => {
     const fetchCampaigns = async () => {
       try {
-        const data = await campaignService.getFeaturedCampaigns(4)
-        setCampaigns(data)
+        const response = await campaignService.getCampaigns({
+          status: "active",
+        })
+        setCampaigns(response.data.slice(0, 4))
       } catch (error) {
         console.error("Error fetching campaigns:", error)
       } finally {
@@ -50,14 +52,6 @@ export function FeaturedInvestments() {
               Explore verified businesses ready for investment
             </p>
           </div>
-          <Link href="/campaigns">
-            <Button
-              variant="outline"
-              className="gap-2 self-start bg-transparent border-primary/30 hover:bg-primary/10 hover:border-primary text-foreground text-sm sm:text-base"
-            >
-              View All <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
         </div>
 
         {loading ? (
@@ -71,9 +65,9 @@ export function FeaturedInvestments() {
             {campaigns.map((campaign, index) => (
               <div
                 key={campaign.id}
-                className={`${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
+                className={`h-full ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
               >
-                <CampaignCard campaign={campaign} />
+                <CampaignCard campaign={campaign} className="h-full" />
               </div>
             ))}
           </div>

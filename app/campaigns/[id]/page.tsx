@@ -310,6 +310,13 @@ export default function CampaignDetailPage() {
                             <p className="text-xs sm:text-sm text-muted-foreground mb-1 sm:mb-2">{campaign.category}</p>
                             <p className="text-[10px] sm:text-xs text-muted-foreground mb-3 sm:mb-4 lg:mb-6 line-clamp-2">{campaign.categoryTagline}</p>
 
+                            {/* Extra Profit Banner */}
+                            {campaign.extraProfitActivated && (
+                                <div className="mb-4 sm:mb-6 bg-cyan-500 text-white px-4 py-3 rounded-lg text-xs sm:text-sm font-medium text-center">
+                                    {campaign.extraProfitMessage || "Extra profit activated. Expires soon!"}
+                                </div>
+                            )}
+
                             {/* Progress */}
                             <div className="mb-4 sm:mb-6">
                                 <div className="flex justify-between items-baseline mb-1.5 sm:mb-2">

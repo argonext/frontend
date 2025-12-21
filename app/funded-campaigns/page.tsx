@@ -110,9 +110,9 @@ export default function FundedCampaignsPage() {
                                     className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
                                 >
                                     {/* Campaign Image */}
-                                    <div className="relative aspect-[4/3] bg-muted">
+                                    <div className="relative aspect-4/3 bg-muted">
                                         <Image
-                                            src={campaign.image || "/placeholder-campaign.jpg"}
+                                            src={campaign.coverImage || "/placeholder-campaign.jpg"}
                                             alt={campaign.title}
                                             fill
                                             className="object-cover"
@@ -143,15 +143,15 @@ export default function FundedCampaignsPage() {
                                                 </span>
                                             </div>
                                             <div className="flex justify-between">
-                                                <span className="text-muted-foreground">Profit Rate</span>
+                                                <span className="text-muted-foreground">Annual Return</span>
                                                 <span className="font-semibold text-accent">
-                                                    {campaign.profitRate}%
+                                                    {campaign.annualizedReturn}
                                                 </span>
                                             </div>
                                             <div className="flex justify-between">
                                                 <span className="text-muted-foreground">Duration</span>
                                                 <span className="font-medium text-foreground">
-                                                    {campaign.duration} months
+                                                    {campaign.durationMonths} months
                                                 </span>
                                             </div>
                                         </div>
@@ -163,7 +163,7 @@ export default function FundedCampaignsPage() {
                                                 <span className="font-semibold text-green-600">100%</span>
                                             </div>
                                             <div className="h-2 bg-muted rounded-full overflow-hidden">
-                                                <div className="h-full bg-green-500 rounded-full" style={{ width: "100%" }} />
+                                                <div className="h-full w-full bg-green-500 rounded-full" />
                                             </div>
                                         </div>
 

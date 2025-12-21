@@ -10,8 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Menu, X, Sparkles, ChevronDown } from "lucide-react"
 
 const mainNavLinks = [
-  { label: "Campaigns", href: "/campaigns" },
-  { label: "Funded Campaigns", href: "/funded-campaigns" },
+  { label: "Funded Campaigns", href: "/campaigns" },
   { label: "Shariah", href: "/shariah" },
   { label: "Products", href: "/app" },
 ]

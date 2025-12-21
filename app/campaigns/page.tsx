@@ -1,14 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { Search, Filter, Leaf, ChevronLeft, ChevronRight } from "lucide-react"
-import { CampaignCard } from "@/components/campaign-card"
+import { Search, Filter, Leaf, TrendingUp, CheckCircle, ChevronLeft, ChevronRight } from "lucide-react"
 import { Campaign } from "@/lib/types/campaign"
 import { campaignService } from "@/lib/api/campaign-service"
+import Image from "next/image"
+import Link from "next/link"
 
 const categories = [
     "All",
@@ -20,12 +20,9 @@ const categories = [
     "Organic Food Business",
 ]
 
-const statuses = ["All", "active", "funded", "completed"]
-
 export default function CampaignsPage() {
     const [searchQuery, setSearchQuery] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("All")
-    const [selectedStatus, setSelectedStatus] = useState("All")
     const [campaigns, setCampaigns] = useState<Campaign[]>([])
     const [loading, setLoading] = useState(true)
     const [currentPage, setCurrentPage] = useState(1)
@@ -34,15 +31,15 @@ export default function CampaignsPage() {
 
     useEffect(() => {
         fetchCampaigns()
-    }, [searchQuery, selectedCategory, selectedStatus, currentPage])
+    }, [searchQuery, selectedCategory, currentPage])
 
     const fetchCampaigns = async () => {
         try {
             setLoading(true)
             const response = await campaignService.getCampaigns({
                 category: selectedCategory,
-                status: selectedStatus,
                 search: searchQuery,
+                status: "funded",
             })
             const allCampaigns = response.data
             setTotalPages(Math.ceil(allCampaigns.length / itemsPerPage))
@@ -54,6 +51,14 @@ export default function CampaignsPage() {
         } finally {
             setLoading(false)
         }
+    }
+
+    const formatCurrency = (amount: number) => {
+        return new Intl.NumberFormat("en-BD", {
+            style: "currency",
+            currency: "BDT",
+            minimumFractionDigits: 0,
+        }).format(amount)
     }
 
     return (
@@ -68,14 +73,14 @@ export default function CampaignsPage() {
                 </div>
                 <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-                        <Leaf className="w-3 h-3 sm:w-4 sm:h-4" />
-                        Halal Investment Opportunities
+                        <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4" />
+                        Successfully Funded
                     </span>
                     <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-hero-foreground mb-3 sm:mb-4">
-                        Ongoing <span className="gradient-text">Investment Opportunities</span>
+                        <span className="gradient-text">Funded Campaigns</span>
                     </h1>
-                    <p className="text-hero-foreground/70 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto">
-                        Explore Shariah-compliant investment opportunities in verified businesses across Bangladesh
+                    <p className="text-hero-foreground/70 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto">
+                        From startups to established ventures, businesses across various sectors have successfully raised funds through AgroNext — creating impact for both entrepreneurs and investors.
                     </p>
                 </div>
             </section>
@@ -141,25 +146,6 @@ export default function CampaignsPage() {
                                 ))}
                             </div>
                         </div>
-
-                        {/* Status Filter */}
-                        <div>
-                            <p className="text-xs sm:text-sm font-medium mb-2 sm:mb-3">Status</p>
-                            <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                                {statuses.map((status) => (
-                                    <button
-                                        key={status}
-                                        onClick={() => setSelectedStatus(status)}
-                                        className={`px-2.5 sm:px-3 lg:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs lg:text-sm font-medium transition-all capitalize active:scale-95 ${selectedStatus === status
-                                            ? "bg-primary text-white shadow-md"
-                                            : "bg-muted text-foreground hover:bg-muted/80"
-                                            }`}
-                                    >
-                                        {status}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -168,23 +154,100 @@ export default function CampaignsPage() {
             <section className="py-8 sm:py-12 lg:py-16">
                 <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
                     {loading ? (
-                        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
-                            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                                <div key={i} className="bg-card border border-border rounded-xl h-[300px] sm:h-[400px] lg:h-[450px] animate-pulse" />
-                            ))}
+                        <div className="text-center py-12">
+                            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent"></div>
+                            <p className="mt-4 text-muted-foreground">Loading campaign details...</p>
                         </div>
                     ) : campaigns.length === 0 ? (
-                        <div className="text-center py-12 sm:py-16">
-                            <div className="w-14 h-14 sm:w-20 sm:h-20 bg-muted rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                                <Search className="w-7 h-7 sm:w-10 sm:h-10 text-muted-foreground" />
-                            </div>
-                            <h3 className="text-base sm:text-xl font-semibold mb-1 sm:mb-2">No campaigns found</h3>
-                            <p className="text-sm sm:text-base text-muted-foreground">Try adjusting your search or filters</p>
+                        <div className="text-center py-12">
+                            <Leaf className="w-16 h-16 text-muted-foreground/50 mx-auto mb-4" />
+                            <p className="text-muted-foreground text-lg">No funded campaigns found.</p>
                         </div>
                     ) : (
-                        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                             {campaigns.map((campaign) => (
-                                <CampaignCard key={campaign.id} campaign={campaign} />
+                                <div
+                                    key={campaign.id}
+                                    className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300"
+                                >
+                                    {/* Campaign Image */}
+                                    <div className="relative aspect-4/3 bg-muted">
+                                        <Image
+                                            src={campaign.coverImage || "/placeholder-campaign.jpg"}
+                                            alt={campaign.title}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                        <div className="absolute top-3 right-3">
+                                            <span className="bg-green-500 text-white text-xs font-semibold px-2.5 py-1 rounded-full">
+                                                Funded
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {/* Campaign Info */}
+                                    <div className="p-4 sm:p-5">
+                                        <div className="mb-3">
+                                            <span className="text-xs text-muted-foreground uppercase tracking-wide">
+                                                {campaign.category}
+                                            </span>
+                                            <h3 className="text-base sm:text-lg font-bold text-foreground mt-1 line-clamp-2">
+                                                {campaign.title}
+                                            </h3>
+                                        </div>
+
+                                        {/* Extra Profit Banner */}
+                                        {campaign.extraProfitActivated && (
+                                            <div className="mb-3 bg-cyan-500 text-white px-3 py-2 rounded-lg text-xs font-medium">
+                                                {campaign.extraProfitMessage || "Extra profit activated. Expires soon!"}
+                                            </div>
+                                        )}
+
+                                        <div className="space-y-2 text-sm">
+                                            <div className="flex justify-between items-center">
+                                                <span className="text-muted-foreground">Annual Return</span>
+                                                <span className="text-base font-semibold text-foreground">
+                                                    {campaign.annualizedReturn}
+                                                </span>
+                                            </div>
+                                            <div className="flex justify-between items-center">
+                                                <span className="text-muted-foreground">Duration</span>
+                                                <span className="text-sm text-foreground">
+                                                    {campaign.durationMonths} months
+                                                </span>
+                                            </div>
+                                            <div className="flex justify-between items-center">
+                                                <span className="text-muted-foreground">Return in {campaign.durationMonths}m</span>
+                                                <span className="text-sm text-foreground">
+                                                    {campaign.totalReturnPercentage}%
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        {/* Progress Bar */}
+                                        <div className="mt-4">
+                                            <div className="flex justify-between text-xs mb-1.5">
+                                                <span className="text-muted-foreground">Funded</span>
+                                                <span className="font-semibold text-green-600">100%</span>
+                                            </div>
+                                            <div className="h-2 bg-muted rounded-full overflow-hidden">
+                                                <div className="h-full w-full bg-green-500 rounded-full" />
+                                            </div>
+                                        </div>
+
+                                        {/* Investors Count */}
+                                        <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
+                                            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                                <TrendingUp className="w-4 h-4 text-green-500" />
+                                                <span>{campaign.investorsCount || 0} Investors</span>
+                                            </div>
+                                            <div className="flex items-center gap-1.5">
+                                                <CheckCircle className="w-4 h-4 text-green-500" />
+                                                <span className="text-xs font-medium text-green-600">Completed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             ))}
                         </div>
                     )}

@@ -18,15 +18,15 @@ export default function Home() {
         <HeroSection />
       </section>
       <StatsBar />
+      <section id="investments">
+        <FeaturedInvestments />
+      </section>
       <FeaturedIn />
       <section id="why-us">
         <WhyUsSection />
       </section>
       <section id="how-it-works">
         <HowItWorks />
-      </section>
-      <section id="investments">
-        <FeaturedInvestments />
       </section>
       <section id="features">
         <PlatformFeatures />

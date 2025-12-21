@@ -19,6 +19,8 @@ export const dummyCampaigns: Campaign[] = [
         annualizedReturn: "14.5% - 18.5%",
         durationMonths: 9,
         totalReturnPercentage: 10.9,
+        extraProfitActivated: true,
+        extraProfitMessage: "Extra profit activated. Expires soon!",
         daysLeft: 4,
         startDate: "2024-12-01",
         endDate: "2024-12-24",
