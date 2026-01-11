@@ -143,7 +143,7 @@ export function Navbar() {
           className={`lg:hidden transition-all duration-400 ease-out ${isOpen ? "max-h-[500px] opacity-100 pb-4" : "max-h-0 opacity-0 overflow-hidden"
             }`}
         >
-          <div className="pt-2 border-t border-white/10">
+          <div className="pt-2 border-t border-white/10 bg-green-700">
             <div className="flex flex-col gap-1">
               {navLinks.map((link, index) => (
                 <Link

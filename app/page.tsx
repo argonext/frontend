@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+import { generateSeoMetadata } from '@/lib/utils/seoMeta';
 import { Navbar } from "@/components/navbar"
 import { HeroSection } from "@/components/hero-section"
 import { StatsBar } from "@/components/stats-bar"
@@ -10,6 +12,16 @@ import { TestimonialsSection } from "@/components/testimonials-section"
 import { ExploreSection } from "@/components/explore-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
+
+export async function generateMetadata(): Promise<Metadata> {
+  return generateSeoMetadata(
+    'Agronext - Shariah-Compliant Investment Platform | Ethical SME Financing',
+    'Invest in ethical, Shariah-compliant agricultural and SME businesses in Bangladesh. Earn competitive returns while creating real impact. Minimum investment from ৳5,000.',
+    'https://agronext.com',
+    'https://agronext.com/og-image.png',
+    'Agronext - Ethical Investment Platform'
+  );
+}
 
 export default function Home() {
   return (

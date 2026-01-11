@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Campaign } from "@/lib/types/campaign"
+import { Campaign } from "@/app/campaigns/_types/domain"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Clock, Lock } from "lucide-react"
@@ -45,15 +45,7 @@ export function CampaignCard({ campaign, className = "", clickable = true }: Cam
 
     const cardContent = (
         <>
-            {/* Risk Grade Badge */}
             <div className="relative">
-                <Badge
-                    variant="outline"
-                    className={`absolute top-2 left-2 sm:top-3 sm:left-3 z-10 text-[10px] sm:text-xs ${getRiskGradeColor(campaign.riskGrade)}`}
-                >
-                    Risk: {campaign.riskGrade}
-                </Badge>
-
                 {isFunded && (
                     <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10">
                         <Badge className="bg-amber-500 text-white text-[10px] sm:text-xs flex items-center gap-1">
@@ -90,25 +82,17 @@ export function CampaignCard({ campaign, className = "", clickable = true }: Cam
                 </p>
                 <div className="mt-auto">
 
-                    {/* Extra Profit Banner */}
-                    {campaign.extraProfitActivated && (
-                        <div className="mb-3 bg-cyan-500 text-white px-2.5 py-1.5 rounded-md text-[10px] sm:text-xs font-medium text-center">
-                            {campaign.extraProfitMessage || "Extra profit activated. Expires soon!"}
-                        </div>
-                    )}
-
                     {/* Returns and Duration */}
-                    <div className="grid grid-cols-1 gap-0 sm:gap-0 mb-3 sm:mb-4">
-                        <div className="flex flex-col-reverse">
-                            <p className="text-xs sm:text-sm font-semibold text-card-foreground">
-                                {campaign.annualizedReturn} <span className="hidden sm:inline">annualized</span>
+                    <div className="grid grid-cols-2 gap-2 mb-3 sm:mb-4">
+                        <div>
+                            <p className="text-[10px] sm:text-xs text-muted-foreground">Expected Returns</p>
+                            <p className="text-xs sm:text-sm font-semibold text-primary">
+                                {campaign.annualizedReturn}
                             </p>
-                            <p className="text-[10px] sm:text-xs text-muted-foreground">{campaign.durationMonths} months</p>
                         </div>
                         <div>
-                            <p className="text-xs sm:text-sm text-primary">
-                                {campaign.totalReturnPercentage}% <span className="hidden sm:inline">return in</span><span className="sm:hidden">/</span> {campaign.durationMonths}m
-                            </p>
+                            <p className="text-[10px] sm:text-xs text-muted-foreground">Duration</p>
+                            <p className="text-xs sm:text-sm font-semibold text-card-foreground">{campaign.durationMonths} months</p>
                         </div>
                     </div>
 

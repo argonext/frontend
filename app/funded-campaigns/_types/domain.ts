@@ -1,0 +1,30 @@
+export interface Campaign {
+    id: string;
+    slug: string;
+    title: string;
+    category: string;
+    description?: string;
+    coverImage: string;
+    images?: string[];
+    totalAmount: number;
+    raisedAmount: number;
+    minInvestment?: number;
+    annualizedReturn?: string;
+    duration: string;
+    riskGrade?: string;
+    investmentStructure?: string;
+    status: string;
+    investorCount: number;
+    daysRemaining?: number;
+    businessName?: string;
+    location?: string;
+    fundingPurpose?: string;
+    repaymentStructure?: string;
+    ownerName?: string;
+    ownerExperience?: string;
+    businessAge?: string;
+    shariahCompliance?: string;
+    contractType?: string;
+    collateralInfo?: string;
+    riskFactors?: string[];
+}

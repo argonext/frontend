@@ -1,0 +1,247 @@
+"use client"
+
+import { Button } from "@/components/ui/button"
+import { HelpCircle, Search, ChevronDown, ChevronUp, MessageCircle, Phone, Mail } from "lucide-react"
+import { useState } from "react"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import Link from "next/link"
+import { FAQ_CATEGORIES } from "../_constants/constants"
+
+const faqCategories = FAQ_CATEGORIES;
+
+export function FAQContent() {
+    const [searchQuery, setSearchQuery] = useState("")
+    const [activeCategory, setActiveCategory] = useState("General")
+    const [openFaqs, setOpenFaqs] = useState<string[]>([])
+    const { ref: heroRef, isVisible: heroVisible } = useScrollAnimation<HTMLDivElement>()
+
+    const toggleFaq = (question: string) => {
+        setOpenFaqs(prev =>
+            prev.includes(question)
+                ? prev.filter(q => q !== question)
+                : [...prev, question]
+        )
+    }
+
+    const filteredCategories = faqCategories.map(category => ({
+        ...category,
+        faqs: category.faqs.filter(faq =>
+            faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+    })).filter(category => category.faqs.length > 0)
+
+    const displayCategories = searchQuery ? filteredCategories : faqCategories.filter(cat => cat.name === activeCategory)
+
+    return (
+        <>
+            {/* Hero Section */}
+            <section className="bg-hero-bg pt-24 pb-16 sm:pt-28 sm:pb-24 relative overflow-hidden">
+                <div className="absolute inset-0">
+                    <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-pulse-slow" />
+                    <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
+                </div>
+                <div ref={heroRef} className={`relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 text-center ${heroVisible ? "animate-fade-in-up" : "opacity-0"}`}>
+                    <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+                        <HelpCircle className="w-4 h-4" />
+                        HELP CENTER
+                    </span>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-hero-foreground mb-4 sm:mb-6">
+                        Frequently Asked <span className="gradient-text">Questions</span>
+                    </h1>
+                    <p className="text-hero-foreground/70 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
+                        Find answers to common questions about investing, Shariah compliance, and business financing.
+                    </p>
+
+                    {/* Search */}
+                    <div className="max-w-2xl mx-auto relative px-4 sm:px-0">
+                        <Search className="absolute left-8 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-hero-foreground/50" />
+                        <input
+                            type="text"
+                            placeholder="Search for answers..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 rounded-xl bg-white/10 border border-white/20 text-sm sm:text-base text-hero-foreground placeholder:text-hero-foreground/50 focus:outline-none focus:border-primary"
+                        />
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ Content */}
+            <section className="py-12 sm:py-16">
+                <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid lg:grid-cols-4 gap-8">
+                        {/* Category Sidebar */}
+                        {!searchQuery && (
+                            <div className="lg:col-span-1">
+                                {/* Mobile horizontal scroll */}
+                                <div className="lg:hidden flex overflow-x-auto gap-2 pb-4 -mx-4 px-4 scrollbar-hide">
+                                    {faqCategories.map((category) => (
+                                        <button
+                                            key={category.name}
+                                            onClick={() => setActiveCategory(category.name)}
+                                            className={`flex-shrink-0 px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${activeCategory === category.name
+                                                ? "gradient-bg text-white"
+                                                : "bg-card border border-border text-muted-foreground hover:text-foreground"
+                                                }`}
+                                        >
+                                            {category.name} ({category.faqs.length})
+                                        </button>
+                                    ))}
+                                </div>
+                                {/* Desktop sidebar */}
+                                <div className="hidden lg:block bg-card border border-border rounded-2xl p-4 sticky top-24">
+                                    <h3 className="font-semibold mb-4">Categories</h3>
+                                    <nav className="space-y-1">
+                                        {faqCategories.map((category) => (
+                                            <button
+                                                key={category.name}
+                                                onClick={() => setActiveCategory(category.name)}
+                                                className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all ${activeCategory === category.name
+                                                    ? "gradient-bg text-white"
+                                                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                                                    }`}
+                                            >
+                                                {category.name}
+                                                <span className="float-right opacity-60">
+                                                    {category.faqs.length}
+                                                </span>
+                                            </button>
+                                        ))}
+                                    </nav>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* FAQ List */}
+                        <div className={searchQuery ? "lg:col-span-4" : "lg:col-span-3"}>
+                            {searchQuery && (
+                                <p className="text-muted-foreground mb-6">
+                                    Showing results for &quot;{searchQuery}&quot;
+                                </p>
+                            )}
+
+                            {displayCategories.map((category) => (
+                                <div key={category.name} className="mb-8">
+                                    {searchQuery && (
+                                        <h2 className="text-xl font-semibold mb-4">{category.name}</h2>
+                                    )}
+                                    <div className="space-y-4">
+                                        {category.faqs.map((faq, index) => (
+                                            <div
+                                                key={index}
+                                                className="bg-card border border-border rounded-lg sm:rounded-xl overflow-hidden"
+                                            >
+                                                <button
+                                                    onClick={() => toggleFaq(faq.question)}
+                                                    className="w-full px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between text-left hover:bg-muted/50 transition-colors"
+                                                >
+                                                    <span className="font-medium pr-4 text-sm sm:text-base">{faq.question}</span>
+                                                    {openFaqs.includes(faq.question) ? (
+                                                        <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+                                                    ) : (
+                                                        <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground flex-shrink-0" />
+                                                    )}
+                                                </button>
+                                                {openFaqs.includes(faq.question) && (
+                                                    <div className="px-4 sm:px-6 pb-3 sm:pb-4">
+                                                        <p className="text-muted-foreground text-sm sm:text-base">{faq.answer}</p>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+
+                            {displayCategories.length === 0 && (
+                                <div className="text-center py-12">
+                                    <HelpCircle className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                                    <h3 className="text-lg font-semibold mb-2">No results found</h3>
+                                    <p className="text-muted-foreground">Try a different search term or browse by category.</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Still Have Questions */}
+            <section className="py-16 sm:py-24 bg-muted/30">
+                <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                            Still Have <span className="gradient-text">Questions?</span>
+                        </h2>
+                        <p className="text-muted-foreground max-w-2xl mx-auto">
+                            Can&apos;t find what you&apos;re looking for? Our team is here to help.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto">
+                        <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-lg hover:border-primary/30 transition-all">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 gradient-bg rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                                <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                            </div>
+                            <h3 className="font-semibold text-sm sm:text-base mb-1 sm:mb-2">Live Chat</h3>
+                            <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">Chat with our support team</p>
+                            <Button variant="outline" className="w-full text-xs sm:text-sm h-9 sm:h-10">
+                                Start Chat
+                            </Button>
+                        </div>
+
+                        <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-lg hover:border-primary/30 transition-all">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 gradient-bg rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                                <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                            </div>
+                            <h3 className="font-semibold text-sm sm:text-base mb-1 sm:mb-2">Call Us</h3>
+                            <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">Sat-Thu, 9AM-6PM</p>
+                            <Link href="tel:+8801XXX">
+                                <Button variant="outline" className="w-full text-xs sm:text-sm h-9 sm:h-10">
+                                    +880 1XXX-XXXXXX
+                                </Button>
+                            </Link>
+                        </div>
+
+                        <div className="bg-card border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:shadow-lg hover:border-primary/30 transition-all">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 gradient-bg rounded-lg sm:rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                                <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                            </div>
+                            <h3 className="font-semibold text-sm sm:text-base mb-1 sm:mb-2">Email</h3>
+                            <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">We&apos;ll respond within 24hrs</p>
+                            <Link href="mailto:support@agronext.com">
+                                <Button variant="outline" className="w-full text-xs sm:text-sm h-9 sm:h-10">
+                                    Send Email
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="py-16 sm:py-24 bg-primary">
+                <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+                        Ready to Start Your Investment Journey?
+                    </h2>
+                    <p className="text-white/80 max-w-2xl mx-auto mb-8">
+                        Join thousands of investors making a positive impact through ethical investments.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <Link href="/app">
+                            <Button className="bg-white text-primary hover:bg-white/90 px-8 py-3 h-auto font-semibold">
+                                Get the App
+                            </Button>
+                        </Link>
+                        <Link href="/contact">
+                            <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-3 h-auto">
+                                Contact Us
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
+            </section>
+        </>
+    )
+}
