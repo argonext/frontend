@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import { generateSeoMetadata } from '@/lib/utils/seoMeta';
+import { Suspense } from 'react';
 import { campaignService } from '../_api/campaign-service';
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { CampaignDetailContent } from './_components/CampaignDetailContent';
-import { notFound } from 'next/navigation';
+import { CampaignDetailLoader } from './_components/CampaignDetailLoader';
 
 type Props = {
     params: Promise<{ id: string }>;
@@ -47,17 +47,27 @@ export default async function CampaignDetailPage({ params }: Props) {
     const resolvedParams = await params;
     const slug = resolvedParams.id;
 
-    // Fetch campaign data on server for instant page load
-    const campaign = await campaignService.getCampaignBySlug(slug);
-
-    if (!campaign) {
-        notFound();
-    }
-
     return (
         <div className="min-h-screen bg-background">
             <Navbar />
-            <CampaignDetailContent initialCampaign={campaign} />
+            <Suspense fallback={
+                <div className="py-16 px-4 sm:px-6 lg:px-8 min-h-[80vh]">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="animate-pulse space-y-8">
+                            <div className="h-96 bg-muted rounded-xl"></div>
+                            <div className="grid lg:grid-cols-3 gap-8">
+                                <div className="lg:col-span-2 space-y-6">
+                                    <div className="h-64 bg-muted rounded-xl"></div>
+                                    <div className="h-64 bg-muted rounded-xl"></div>
+                                </div>
+                                <div className="h-96 bg-muted rounded-xl"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }>
+                <CampaignDetailLoader slug={slug} />
+            </Suspense>
             <Footer />
         </div>
     );
